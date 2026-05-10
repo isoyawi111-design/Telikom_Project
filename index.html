@@ -236,23 +236,29 @@ const loginSection = document.getElementById('loginSection');
 loginForm.addEventListener('submit', function (e) {
     e.preventDefault();
 
-    const username = document.getElementById('username').value.trim();
-    const password = document.getElementById('password').value.trim();
+   <script>
+document.addEventListener("DOMContentLoaded", function () {
+    const loginForm = document.getElementById("loginForm");
 
-    if (username === VALID_USERNAME && password === VALID_PASSWORD) {
-        message.textContent = 'Login successful! Redirecting to Dashboard...';
-        message.className = 'message success';
+    loginForm.addEventListener("submit", function (e) {
+        e.preventDefault();
 
-        setTimeout(() => {
-            window.location.href = 'dashboard.html';
-        }, 1000);
-    } else {
-        message.textContent = 'Invalid username or password.';
-        message.className = 'message error';
-    }
+        // Get entered username and password
+        const username = document.getElementById("username").value.trim();
+        const password = document.getElementById("password").value.trim();
+
+        // Check login credentials
+        if (username === "Admin" && password === "Admin") {
+            // Save login session
+            sessionStorage.setItem("loggedIn", "true");
+
+            // Redirect to dashboard
+            window.location.href = "dashboard.html";
+        } else {
+            alert("Invalid Username or Password!");
+        }
+    });
 });
-
-
 </script>
 
 </body>
