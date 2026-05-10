@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Telikom PNG Ltd | Login Platform</title>
+<title>Telikom PNG Ltd | Engineers Dashboard</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,150 +19,45 @@
 
 body {
     min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
     background: linear-gradient(135deg, #0057b8, #00a2ff);
-}
-
-.login-container {
-    width: 100%;
-    max-width: 420px;
-    background: rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(18px);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    border-radius: 20px;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
-    overflow: hidden;
-}
-
-.login-header {
-    text-align: center;
-    padding: 30px 25px 20px;
     color: #fff;
 }
 
-.login-header img {
-    width: 90px;
-    height: 90px;
+.header {
+    background: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    padding: 20px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.header-left img {
+    width: 60px;
+    height: 60px;
     object-fit: contain;
-    background: rgba(255, 255, 255, 0.95);
-    padding: 8px;
     border-radius: 50%;
-    margin-bottom: 15px;
+    background: #fff;
+    padding: 5px;
 }
 
-.login-header h1 {
+.header h1 {
     font-size: 28px;
-    font-weight: 700;
-    margin-bottom: 5px;
-}
-
-.login-header p {
-    font-size: 14px;
-    opacity: 0.95;
-}
-
-.login-body {
-    padding: 10px 30px 30px;
-}
-
-.form-group {
-    margin-bottom: 20px;
-}
-
-.form-group label {
-    display: block;
-    margin-bottom: 8px;
-    color: #fff;
-    font-weight: 600;
-}
-
-.form-group input {
-    width: 100%;
-    padding: 12px 15px;
-    border: 1px solid rgba(255, 255, 255, 0.4);
-    border-radius: 8px;
-    font-size: 15px;
-    outline: none;
-    background: rgba(255, 255, 255, 0.9);
-}
-
-.form-group input:focus {
-    border-color: #ffffff;
-    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.2);
-}
-
-.login-btn {
-    width: 100%; 
-    padding: 13px;
-    border: none;
-    border-radius: 8px;
-    background: #0077b6;
-    color: #fff;
-    font-size: 16px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.login-btn:hover {
-    background: #005f8f;
-}
-
-.forgot-password {
-    margin-top: 15px;
-    text-align: center;
-}
-
-.forgot-password a {
-    color: #fff;
-    font-size: 14px;
-    text-decoration: none;
-}
-
-.forgot-password a:hover {
-    text-decoration: underline;
-}
-
-.message {
-    margin-top: 15px;
-    text-align: center;
-    font-size: 14px;
-    font-weight: 500;
-}
-
-.message.success {
-    color: #b7ffb7;
-}
-
-.message.error {
-    color: #ffd6d6;
-}
-
-.dashboard {
-    display: none;
-    padding: 40px 30px;
-    text-align: center;
-    color: #fff;
-}
-
-.dashboard h2 {
-    margin-bottom: 10px;
-}
-
-.dashboard p {
-    margin-bottom: 20px;
-    line-height: 1.6;
 }
 
 .logout-btn {
-    padding: 10px 25px;
     background: #d00000;
     color: #fff;
     border: none;
+    padding: 10px 20px;
     border-radius: 8px;
     cursor: pointer;
     font-weight: 600;
@@ -172,91 +67,238 @@ body {
     background: #a00000;
 }
 
-.login-footer {
-    text-align: center;
-    padding: 15px 20px;
-    font-size: 13px;
-    color: #fff;
-    background: rgba(0, 0, 0, 0.15);
+.container {
+    max-width: 1300px;
+    margin: auto;
+    padding: 40px 20px;
 }
 
-.login-footer strong {
-    color: #ffffff;
+.welcome {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.welcome h2 {
+    font-size: 36px;
+    margin-bottom: 10px;
+}
+
+.welcome p {
+    opacity: 0.95;
+}
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+    margin-bottom: 50px;
+}
+
+.card {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 18px;
+    padding: 30px 20px;
+    text-align: center;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    background: rgba(255, 255, 255, 0.22);
+}
+
+.card h3 {
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+.chat-section {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 20px;
+    padding: 30px;
+    margin-bottom: 40px;
+}
+
+.chat-section h2 {
+    margin-bottom: 20px;
+}
+
+.chat-box {
+    height: 250px;
+    background: rgba(255, 255, 255, 0.9);
+    color: #333;
+    border-radius: 10px;
+    padding: 15px;
+    overflow-y: auto;
+    margin-bottom: 15px;
+}
+
+.chat-message {
+    margin-bottom: 10px;
+    padding: 10px;
+    background: #e9f4ff;
+    border-radius: 8px;
+}
+
+.chat-input-area {
+    display: flex;
+    gap: 10px;
+}
+
+.chat-input-area input {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    outline: none;
+}
+
+.chat-input-area button {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    background: #0077b6;
+    color: #fff;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.chat-input-area button:hover {
+    background: #005f8f;
+}
+
+.footer {
+    text-align: center;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.2);
+    font-size: 14px;
+}
+
+.footer strong {
+    color: #fff;
+}
+
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+
+    .welcome h2 {
+        font-size: 28px;
+    }
+
+    .chat-input-area {
+        flex-direction: column;
+    }
 }
 </style>
 </head>
 <body>
 
-<div class="login-container">
+<script>
+// ==================================================
+// ACCESS CONTROL
+// This dashboard can only be accessed after a
+// successful login from index.html.
+// index.html must set:
+// sessionStorage.setItem('loggedIn', 'true');
+// ==================================================
+if (sessionStorage.getItem('loggedIn') !== 'true') {
+    window.location.href = 'index.html';
+}
+</script>
 
-    <div class="login-header">
+<header class="header">
+    <div class="header-left">
         <img src="logotpng.jfif" alt="Telikom PNG Logo">
-        <h1>Telikom PNG Ltd</h1>
-        <p>Secure Login Platform</p>
+        <h1>Engineers Dashboard</h1>
     </div>
 
-    <div class="login-body" id="loginSection">
-        <form id="loginForm">
-            <div class="form-group">
-                <label for="username">Username</label>
-                <input type="text" id="username" placeholder="Enter username" required>
-            </div>
+    <button class="logout-btn" onclick="logout()">Logout</button>
+</header>
 
-            <div class="form-group">
-                <label for="password">Password</label>
-                <input type="password" id="password" placeholder="Enter password" required>
-            </div>
+<div class="container">
 
-            <button type="submit" class="login-btn">Login</button>
+    <section class="welcome">
+        <h2>Welcome to Telikom PNG Engineering Portal</h2>
+        <p>Select a module below to access engineering systems and reports.</p>
+    </section>
 
-            <div class="forgot-password">
-                <a href="#" onclick="alert('Please contact the System Administrator to reset your password.'); return false;">
-                    Forgot Password?
-                </a>
-            </div>
+    <section class="dashboard-grid">
+        <div class="card" onclick="openModule('Projects')"><h3>1. Projects</h3></div>
+        <div class="card" onclick="openModule('Network Health Audit')"><h3>2. Network Health Audit</h3></div>
+        <div class="card" onclick="openModule('Refueling')"><h3>3. Refueling</h3></div>
+        <div class="card" onclick="openModule('Network Transmission')"><h3>4. Network Transmission</h3></div>
+        <div class="card" onclick="openModule('Radio Frequency')"><h3>5. Radio Frequency</h3></div>
+        <div class="card" onclick="openModule('Base Station Systems')"><h3>6. Base Station Systems</h3></div>
+        <div class="card" onclick="openModule('Network Operations Center')"><h3>7. Network Operations Center</h3></div>
+        <div class="card" onclick="openModule('Core Access Network')"><h3>8. Core Access Network</h3></div>
+        <div class="card" onclick="openModule('Network Infrastructure')"><h3>9. Network Infrastructure</h3></div>
+        <div class="card" onclick="openModule('Centers')"><h3>10. Centers</h3></div>
+    </section>
 
-            <div id="message" class="message"></div>
-        </form>
-    </div>
+    <section class="chat-section">
+        <h2>LiveWire Engineer Chat</h2>
+        <div class="chat-box" id="chatBox">
+            <div class="chat-message"><strong>System:</strong> Welcome to LiveWire Chat.</div>
+        </div>
 
-    <div class="login-footer">
-        Powered By: <strong>Iso Yawi | System Creator</strong>
-    </div>
+        <div class="chat-input-area">
+            <input type="text" id="chatInput" placeholder="Type your message here...">
+            <button onclick="sendMessage()">Send</button>
+        </div>
+    </section>
 
 </div>
 
+<footer class="footer">
+    Powered By: <strong>Iso Yawi | System Creator</strong>
+</footer>
+
 <script>
-const VALID_USERNAME = 'Admin';
-const VALID_PASSWORD = 'Admin';
+function openModule(moduleName) {
+    alert(moduleName + ' module will open here.');
+}
 
-const loginForm = document.getElementById('loginForm');
-const message = document.getElementById('message');
-const loginSection = document.getElementById('loginSection');
+function logout() {
+    sessionStorage.removeItem('loggedIn');
+    window.location.href = 'index.html';
+}
 
-loginForm.addEventListener('submit', function (e) {
-    e.preventDefault();
+function sendMessage() {
+    const input = document.getElementById('chatInput');
+    const chatBox = document.getElementById('chatBox');
+    const message = input.value.trim();
 
-    const username = document.getElementById('username').value.trim();
-    const password = document.getElementById('password').value.trim();
+    if (message === '') return;
 
-    if (username === VALID_USERNAME && password === VALID_PASSWORD) {
-        message.textContent = 'Login successful! Redirecting to Dashboard...';
-        message.className = 'message success';
+    const msgDiv = document.createElement('div');
+    msgDiv.className = 'chat-message';
+    msgDiv.innerHTML = '<strong>Engineer:</strong> ' + message;
 
-        setTimeout(() => {
-            window.location.href = 'dashboard.html';
-        }, 1000);
-    } else {
-        message.textContent = 'Invalid username or password.';
-        message.className = 'message error';
+    chatBox.appendChild(msgDiv);
+    chatBox.scrollTop = chatBox.scrollHeight;
+    input.value = '';
+}
+
+// Send message on Enter key
+const chatInput = document.getElementById('chatInput');
+chatInput.addEventListener('keypress', function(event) {
+    if (event.key === 'Enter') {
+        event.preventDefault();
+        sendMessage();
     }
 });
-
-
 </script>
 
 </body>
 </html>
-
-* **Username:** `Admin`
-* **Password:** `Admin`
