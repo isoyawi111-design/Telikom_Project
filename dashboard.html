@@ -1,1 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Telikom PNG Ltd | Login Platform</title>
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background: linear-gradient(135deg, #0057b8, #00a2ff);
+}
+
+.login-container {
+    width: 100%;
+    max-width: 420px;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 20px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+    overflow: hidden;
+}
+
+.login-header {
+    text-align: center;
+    padding: 30px 25px 20px;
+    color: #fff;
+}
+
+.login-header img {
+    width: 90px;
+    height: 90px;
+    object-fit: contain;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 8px;
+    border-radius: 50%;
+    margin-bottom: 15px;
+}
+
+.login-header h1 {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.login-header p {
+    font-size: 14px;
+    opacity: 0.95;
+}
+
+.login-body {
+    padding: 10px 30px 30px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #fff;
+    font-weight: 600;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 8px;
+    font-size: 15px;
+    outline: none;
+    background: rgba(255, 255, 255, 0.9);
+}
+
+.form-group input:focus {
+    border-color: #ffffff;
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.2);
+}
+
+.login-btn {
+    width: 100%; 
+    padding: 13px;
+    border: none;
+    border-radius: 8px;
+    background: #0077b6;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.login-btn:hover {
+    background: #005f8f;
+}
+
+.forgot-password {
+    margin-top: 15px;
+    text-align: center;
+}
+
+.forgot-password a {
+    color: #fff;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+.forgot-password a:hover {
+    text-decoration: underline;
+}
+
+.message {
+    margin-top: 15px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.message.success {
+    color: #b7ffb7;
+}
+
+.message.error {
+    color: #ffd6d6;
+}
+
+.dashboard {
+    display: none;
+    padding: 40px 30px;
+    text-align: center;
+    color: #fff;
+}
+
+.dashboard h2 {
+    margin-bottom: 10px;
+}
+
+.dashboard p {
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+.logout-btn {
+    padding: 10px 25px;
+    background: #d00000;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.logout-btn:hover {
+    background: #a00000;
+}
+
+.login-footer {
+    text-align: center;
+    padding: 15px 20px;
+    font-size: 13px;
+    color: #fff;
+    background: rgba(0, 0, 0, 0.15);
+}
+
+.login-footer strong {
+    color: #ffffff;
+}
+</style>
+</head>
+<body>
+
+<div class="login-container">
+
+    <div class="login-header">
+        <img src="logotpng.jfif" alt="Telikom PNG Logo">
+        <h1>Telikom PNG Ltd</h1>
+        <p>Secure Login Platform</p>
+    </div>
+
+    <div class="login-body" id="loginSection">
+        <form id="loginForm">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" placeholder="Enter username" required>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" placeholder="Enter password" required>
+            </div>
+
+            <button type="submit" class="login-btn">Login</button>
+
+            <div class="forgot-password">
+                <a href="#" onclick="alert('Please contact the System Administrator to reset your password.'); return false;">
+                    Forgot Password?
+                </a>
+            </div>
+
+            <div id="message" class="message"></div>
+        </form>
+    </div>
+
+    <div class="login-footer">
+        Powered By: <strong>Iso Yawi | System Creator</strong>
+    </div>
+
+</div>
+
+<script>
+const VALID_USERNAME = 'Admin';
+const VALID_PASSWORD = 'Admin';
+
+const loginForm = document.getElementById('loginForm');
+const message = document.getElementById('message');
+const loginSection = document.getElementById('loginSection');
+
+loginForm.addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    const username = document.getElementById('username').value.trim();
+    const password = document.getElementById('password').value.trim();
+
+    if (username === VALID_USERNAME && password === VALID_PASSWORD) {
+        message.textContent = 'Login successful! Redirecting to Dashboard...';
+        message.className = 'message success';
+
+        setTimeout(() => {
+            window.location.href = 'dashboard.html';
+        }, 1000);
+    } else {
+        message.textContent = 'Invalid username or password.';
+        message.className = 'message error';
+    }
+});
+
+
+</script>
+
+</body>
+</html>
+
+* **Username:** `Admin`
+* **Password:** `Admin`
