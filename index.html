@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Telikom PNG | Enterprise NOC System</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Telikom PNG | Login</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
@@ -16,311 +16,124 @@
 }
 
 body{
-    background: linear-gradient(135deg,#003b73,#00a2ff);
-    min-height:100vh;
-    color:white;
-    display:flex;
-    flex-direction:column;
-}
-
-/* ================= HEADER ================= */
-header{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:15px 25px;
-    background:rgba(0,0,0,0.25);
-    backdrop-filter:blur(15px);
-}
-
-.header-left{
-    display:flex;
-    align-items:center;
-    gap:12px;
-}
-
-.header-left img{
-    width:55px;
-    height:55px;
-    border-radius:50%;
-    background:#fff;
-    padding:4px;
-}
-
-.header-right{
-    display:flex;
-    align-items:center;
-    gap:12px;
-}
-
-.icon-btn{
-    width:42px;
-    height:42px;
-    border-radius:50%;
-    background:white;
-    color:#003b73;
+    height:100vh;
     display:flex;
     justify-content:center;
     align-items:center;
+    background:linear-gradient(135deg,#0057b8,#00a2ff);
+}
+
+.login-box{
+    width:380px;
+    padding:30px;
+    background:rgba(255,255,255,0.15);
+    backdrop-filter:blur(18px);
+    border-radius:20px;
+    text-align:center;
+    color:#fff;
+    box-shadow:0 20px 50px rgba(0,0,0,0.3);
+}
+
+.login-box img{
+    width:90px;
+    background:#fff;
+    border-radius:50%;
+    padding:6px;
+    margin-bottom:10px;
+}
+
+.login-box h2{
+    margin-bottom:10px;
+}
+
+.login-box input{
+    width:100%;
+    padding:12px;
+    margin:10px 0;
+    border:none;
+    border-radius:8px;
+    outline:none;
+}
+
+.login-box button{
+    width:100%;
+    padding:12px;
+    background:#003b73;
+    color:#fff;
+    border:none;
+    border-radius:8px;
     cursor:pointer;
     font-weight:bold;
 }
 
-/* ================= LAYOUT ================= */
-.main{
-    flex:1;
-    display:flex;
+.login-box button:hover{
+    background:#00264d;
 }
 
-/* SIDEBAR */
-.sidebar{
-    width:270px;
-    background:rgba(0,0,0,0.25);
-    backdrop-filter:blur(12px);
-    padding:20px;
+.note{
+    margin-top:10px;
+    font-size:13px;
+    opacity:0.9;
 }
 
-.sidebar h3{
-    margin-bottom:15px;
-}
-
-.nav-btn{
-    width:100%;
-    padding:12px;
-    margin-bottom:8px;
-    border:none;
-    border-radius:8px;
-    background:rgba(255,255,255,0.15);
-    color:white;
-    text-align:left;
-    cursor:pointer;
-    transition:0.3s;
-}
-
-.nav-btn:hover{
-    background:rgba(255,255,255,0.3);
-}
-
-/* CONTENT */
-.content{
-    flex:1;
-    padding:25px;
-}
-
-.panel{
-    background:rgba(255,255,255,0.12);
-    padding:20px;
-    border-radius:15px;
-    margin-bottom:15px;
-}
-
-/* ================= CHAT SYSTEM ================= */
-.chat-icon{
-    position:relative;
-}
-
-.chat-popup{
-    position:fixed;
-    right:20px;
-    bottom:70px;
-    width:340px;
-    height:460px;
-    background:white;
-    color:black;
-    border-radius:15px;
-    display:none;
-    flex-direction:column;
-    overflow:hidden;
-    box-shadow:0 10px 40px rgba(0,0,0,0.4);
-}
-
-.chat-header{
-    background:#003b73;
-    color:white;
-    padding:12px;
-    display:flex;
-    justify-content:space-between;
-}
-
-.status{
-    font-size:12px;
-    padding:8px;
-    background:#f1f1f1;
-}
-
-.users{
-    font-size:12px;
-    padding:8px;
-    border-bottom:1px solid #ddd;
-    color:#333;
-}
-
-.chat-box{
-    flex:1;
-    padding:10px;
-    overflow-y:auto;
-}
-
-.msg{
-    background:#e8f4ff;
-    padding:8px;
-    border-radius:8px;
-    margin-bottom:6px;
-}
-
-.chat-input{
-    display:flex;
-}
-
-.chat-input input{
-    flex:1;
-    padding:10px;
-    border:none;
-    border-top:1px solid #ddd;
-}
-
-.chat-input button{
-    background:#003b73;
-    color:white;
-    border:none;
-    padding:10px;
-    cursor:pointer;
-}
-
-/* ================= FOOTER ================= */
-footer{
-    background:rgba(0,0,0,0.25);
-    backdrop-filter:blur(15px);
-    text-align:center;
-    padding:12px;
+.footer{
     position:fixed;
     bottom:0;
     width:100%;
+    text-align:center;
+    padding:10px;
+    background:rgba(0,0,0,0.2);
+    color:#fff;
 }
 </style>
 </head>
 
 <body>
 
-<script>
-/* ================= SECURITY ================= */
-if(sessionStorage.getItem("loggedIn") !== "true"){
-    window.location.href="index.html";
-}
-</script>
+<div class="login-box">
+    <img src="logotpng.jfif">
+    <h2>Telikom PNG Login</h2>
 
-<!-- HEADER -->
-<header>
-    <div class="header-left">
-        <img src="logotpng.jfif">
-        <h3>Telikom PNG | NOC Enterprise System</h3>
-    </div>
+    <input type="text" id="username" placeholder="Username">
+    <input type="password" id="password" placeholder="Password">
 
-    <div class="header-right">
+    <button onclick="login()">Login</button>
 
-        <div class="icon-btn chat-icon" onclick="toggleChat()">💬</div>
-
-        <div class="icon-btn" onclick="alert('System Status: ONLINE')">📡</div>
-
-        <button onclick="logout()" style="background:#d00000;color:white;border:none;padding:10px 15px;border-radius:8px;">
-            Logout
-        </button>
-
-    </div>
-</header>
-
-<!-- MAIN -->
-<div class="main">
-
-    <!-- SIDEBAR -->
-    <div class="sidebar">
-        <h3>Engineering Modules</h3>
-
-        <button class="nav-btn">Projects Control</button>
-        <button class="nav-btn">Network Health Audit</button>
-        <button class="nav-btn">Refueling System</button>
-        <button class="nav-btn">Transmission Layer</button>
-        <button class="nav-btn">Radio Frequency Ops</button>
-        <button class="nav-btn">Base Station Systems</button>
-        <button class="nav-btn">Network Operations Center</button>
-        <button class="nav-btn">Core Access Network</button>
-        <button class="nav-btn">Infrastructure</button>
-        <button class="nav-btn">Centers Management</button>
-    </div>
-
-    <!-- CONTENT -->
-    <div class="content">
-
-        <div class="panel">
-            <h2>Enterprise Control Dashboard</h2>
-            <p>Monitor Telikom PNG network operations in real-time (UI simulation).</p>
-        </div>
-
-        <div class="panel">
-            <h3>System Status</h3>
-            <p>🟢 Core Network: Active</p>
-            <p>🟢 Radio Systems: Stable</p>
-            <p>🟡 Power Systems: Monitoring</p>
-        </div>
-
+    <div class="note">
+        Forgot password? Contact Admin
     </div>
 </div>
 
-<!-- CHAT POPUP -->
-<div class="chat-popup" id="chatPopup">
-
-    <div class="chat-header">
-        <span>LiveWire Enterprise Chat</span>
-        <button onclick="toggleChat()">X</button>
-    </div>
-
-    <div class="status">
-        🟢 Online: Admin, Engineer1<br>
-        ⚪ Offline: Engineer2
-    </div>
-
-    <div class="chat-box" id="chatBox">
-        <div class="msg"><b>System:</b> Secure channel established</div>
-    </div>
-
-    <div class="chat-input">
-        <input id="msg" placeholder="Type secure message...">
-        <button onclick="sendMsg()">Send</button>
-    </div>
-
-</div>
-
-<!-- FOOTER -->
-<footer>
+<div class="footer">
     Powered By: Iso Yawi | System Creator
-</footer>
+</div>
 
 <script>
 
-function logout(){
-    sessionStorage.removeItem("loggedIn");
-    window.location.href="index.html";
+function login(){
+
+    let user = document.getElementById("username").value;
+    let pass = document.getElementById("password").value;
+
+    // ✅ CHECK LOGIN
+    if(user === "Admin" && pass === "Admin"){
+
+        // SAVE SESSION
+        sessionStorage.setItem("loggedIn","true");
+
+        // REDIRECT TO DASHBOARD
+        window.location.href = "dashboard.html";
+
+    } else {
+        alert("Invalid Username or Password");
+    }
 }
 
-function toggleChat(){
-    let chat=document.getElementById("chatPopup");
-    chat.style.display = (chat.style.display==="flex") ? "none":"flex";
+// If already logged in, skip login page
+if(sessionStorage.getItem("loggedIn") === "true"){
+    window.location.href = "dashboard.html";
 }
 
-function sendMsg(){
-    let input=document.getElementById("msg");
-    let box=document.getElementById("chatBox");
-
-    if(input.value.trim()==="") return;
-
-    let div=document.createElement("div");
-    div.className="msg";
-    div.innerHTML="<b>You:</b> "+input.value;
-
-    box.appendChild(div);
-    input.value="";
-    box.scrollTop=box.scrollHeight;
-}
 </script>
 
 </body>
