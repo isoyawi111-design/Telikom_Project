@@ -23,7 +23,7 @@ body {
     justify-content: center;
     align-items: center;
     padding: 20px;
-    background: url('Loginbackground.jfif') no-repeat center center/cover;
+    background: linear-gradient(135deg, #0057b8, #00a2ff);
 }
 
 .login-container {
@@ -219,12 +219,6 @@ body {
         </form>
     </div>
 
-    <div class="dashboard" id="dashboard">
-        <h2>Engineers Dashboard</h2>
-        <p>Welcome, Admin. You have successfully logged into the Telikom PNG Ltd Engineering System.</p>
-        <button class="logout-btn" onclick="logout()">Logout</button>
-    </div>
-
     <div class="login-footer">
         Powered By: <strong>Iso Yawi | System Creator</strong>
     </div>
@@ -238,7 +232,6 @@ const VALID_PASSWORD = 'Admin';
 const loginForm = document.getElementById('loginForm');
 const message = document.getElementById('message');
 const loginSection = document.getElementById('loginSection');
-const dashboard = document.getElementById('dashboard');
 
 loginForm.addEventListener('submit', function (e) {
     e.preventDefault();
@@ -247,12 +240,11 @@ loginForm.addEventListener('submit', function (e) {
     const password = document.getElementById('password').value.trim();
 
     if (username === VALID_USERNAME && password === VALID_PASSWORD) {
-        message.textContent = 'Login successful! Redirecting to Engineers Dashboard...';
+        message.textContent = 'Login successful! Redirecting to Dashboard...';
         message.className = 'message success';
 
         setTimeout(() => {
-            loginSection.style.display = 'none';
-            dashboard.style.display = 'block';
+            window.location.href = 'dashboard.html';
         }, 1000);
     } else {
         message.textContent = 'Invalid username or password.';
@@ -260,13 +252,7 @@ loginForm.addEventListener('submit', function (e) {
     }
 });
 
-function logout() {
-    dashboard.style.display = 'none';
-    loginSection.style.display = 'block';
-    loginForm.reset();
-    message.textContent = '';
-    message.className = 'message';
-}
+
 </script>
 
 </body>
