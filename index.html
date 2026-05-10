@@ -22,8 +22,8 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 20px;
     background: linear-gradient(135deg, #0057b8, #00a2ff);
+    padding: 20px;
 }
 
 .login-container {
@@ -48,7 +48,7 @@ body {
     width: 90px;
     height: 90px;
     object-fit: contain;
-    background: rgba(255, 255, 255, 0.95);
+    background: #fff;
     padding: 8px;
     border-radius: 50%;
     margin-bottom: 15px;
@@ -57,51 +57,44 @@ body {
 .login-header h1 {
     font-size: 28px;
     font-weight: 700;
-    margin-bottom: 5px;
 }
 
 .login-header p {
     font-size: 14px;
-    opacity: 0.95;
+    opacity: 0.9;
 }
 
 .login-body {
-    padding: 10px 30px 30px;
+    padding: 20px 30px 30px;
 }
 
 .form-group {
-    margin-bottom: 20px;
+    margin-bottom: 18px;
 }
 
 .form-group label {
     display: block;
-    margin-bottom: 8px;
+    margin-bottom: 6px;
     color: #fff;
     font-weight: 600;
 }
 
 .form-group input {
     width: 100%;
-    padding: 12px 15px;
-    border: 1px solid rgba(255, 255, 255, 0.4);
+    padding: 12px;
     border-radius: 8px;
-    font-size: 15px;
+    border: none;
     outline: none;
-    background: rgba(255, 255, 255, 0.9);
-}
-
-.form-group input:focus {
-    border-color: #ffffff;
-    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.2);
+    font-size: 15px;
 }
 
 .login-btn {
-    width: 100%; 
-    padding: 13px;
+    width: 100%;
+    padding: 12px;
     border: none;
     border-radius: 8px;
     background: #0077b6;
-    color: #fff;
+    color: white;
     font-size: 16px;
     font-weight: 600;
     cursor: pointer;
@@ -113,13 +106,13 @@ body {
 }
 
 .forgot-password {
-    margin-top: 15px;
     text-align: center;
+    margin-top: 12px;
 }
 
 .forgot-password a {
     color: #fff;
-    font-size: 14px;
+    font-size: 13px;
     text-decoration: none;
 }
 
@@ -128,136 +121,95 @@ body {
 }
 
 .message {
-    margin-top: 15px;
+    margin-top: 10px;
     text-align: center;
     font-size: 14px;
-    font-weight: 500;
-}
-
-.message.success {
-    color: #b7ffb7;
-}
-
-.message.error {
-    color: #ffd6d6;
-}
-
-.dashboard {
-    display: none;
-    padding: 40px 30px;
-    text-align: center;
     color: #fff;
-}
-
-.dashboard h2 {
-    margin-bottom: 10px;
-}
-
-.dashboard p {
-    margin-bottom: 20px;
-    line-height: 1.6;
-}
-
-.logout-btn {
-    padding: 10px 25px;
-    background: #d00000;
-    color: #fff;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: 600;
-}
-
-.logout-btn:hover {
-    background: #a00000;
 }
 
 .login-footer {
     text-align: center;
-    padding: 15px 20px;
+    padding: 15px;
     font-size: 13px;
     color: #fff;
-    background: rgba(0, 0, 0, 0.15);
-}
-
-.login-footer strong {
-    color: #ffffff;
+    background: rgba(0,0,0,0.15);
 }
 </style>
 </head>
+
 <body>
 
 <div class="login-container">
 
+    <!-- HEADER -->
     <div class="login-header">
-        <img src="logotpng.jfif" alt="Telikom PNG Logo">
+        <img src="logotpng.jfif" alt="Telikom Logo">
         <h1>Telikom PNG Ltd</h1>
         <p>Secure Login Platform</p>
     </div>
 
-    <div class="login-body" id="loginSection">
+    <!-- LOGIN FORM -->
+    <div class="login-body">
+
         <form id="loginForm">
+
             <div class="form-group">
-                <label for="username">Username</label>
-                <input type="text" id="username" placeholder="Enter username" required>
+                <label>Username</label>
+                <input type="text" id="username" placeholder="Enter Username" required>
             </div>
 
             <div class="form-group">
-                <label for="password">Password</label>
-                <input type="password" id="password" placeholder="Enter password" required>
+                <label>Password</label>
+                <input type="password" id="password" placeholder="Enter Password" required>
             </div>
 
             <button type="submit" class="login-btn">Login</button>
 
             <div class="forgot-password">
-                <a href="#" onclick="alert('Please contact the System Administrator to reset your password.'); return false;">
+                <a href="#" onclick="alert('Contact Admin for password reset'); return false;">
                     Forgot Password?
                 </a>
             </div>
 
-            <div id="message" class="message"></div>
+            <div class="message" id="message"></div>
+
         </form>
+
     </div>
 
+    <!-- FOOTER -->
     <div class="login-footer">
         Powered By: <strong>Iso Yawi | System Creator</strong>
     </div>
 
 </div>
 
+<!-- ✅ LOGIN SCRIPT (FIXED) -->
 <script>
-const VALID_USERNAME = 'Admin';
-const VALID_PASSWORD = 'Admin';
-
-const loginForm = document.getElementById('loginForm');
-const message = document.getElementById('message');
-const loginSection = document.getElementById('loginSection');
-
-loginForm.addEventListener('submit', function (e) {
+document.getElementById("loginForm").addEventListener("submit", function(e) {
     e.preventDefault();
 
-   <script>
-document.addEventListener("DOMContentLoaded", function () {
-    const loginForm = document.getElementById("loginForm");
+    const username = document.getElementById("username").value.trim();
+    const password = document.getElementById("password").value.trim();
+    const message = document.getElementById("message");
 
-    loginForm.addEventListener("submit", function (e) {
-        e.preventDefault();
+    if (username === "Admin" && password === "Admin") {
 
-        // Get entered username and password
-        const username = document.getElementById("username").value.trim();
-        const password = document.getElementById("password").value.trim();
+        // Save login session
+        sessionStorage.setItem("loggedIn", "true");
 
-        // Check login credentials
-        if (username === "Admin" && password === "Admin") {
-            // Save login session
-            sessionStorage.setItem("loggedIn", "true");
+        message.style.color = "#b7ffb7";
+        message.innerText = "Login successful... Redirecting...";
 
-            // Redirect to dashboard
+        // Redirect to dashboard
+        setTimeout(() => {
             window.location.href = "dashboard.html";
-        } else {
-            alert("Invalid Username or Password!");
-        }
-    });
+        }, 1000);
+
+    } else {
+        message.style.color = "#ffd6d6";
+        message.innerText = "Invalid Username or Password!";
+    }
 });
 </script>
 
