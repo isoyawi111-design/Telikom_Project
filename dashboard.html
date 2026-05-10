@@ -2,302 +2,262 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Telikom PNG Ltd | Engineers Dashboard</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Telikom PNG | Engineers Dashboard</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Poppins;
 }
 
-body {
-    min-height: 100vh;
-    background: linear-gradient(135deg, #0057b8, #00a2ff);
-    color: #fff;
+body{
+    background: linear-gradient(135deg,#0057b8,#00a2ff);
+    min-height:100vh;
+    color:white;
 }
 
-.header {
-    background: rgba(0, 0, 0, 0.2);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    padding: 20px 30px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+/* HEADER */
+header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px 25px;
+    background:rgba(0,0,0,0.25);
+    backdrop-filter:blur(12px);
 }
 
-.header-left {
-    display: flex;
-    align-items: center;
-    gap: 15px;
+.left{
+    display:flex;
+    align-items:center;
+    gap:12px;
 }
 
-.header-left img {
-    width: 60px;
-    height: 60px;
-    object-fit: contain;
-    border-radius: 50%;
-    background: #fff;
-    padding: 5px;
+.left img{
+    width:55px;
+    height:55px;
+    border-radius:50%;
+    background:white;
+    padding:4px;
 }
 
-.header h1 {
-    font-size: 28px;
+.right{
+    display:flex;
+    align-items:center;
+    gap:15px;
 }
 
-.logout-btn {
-    background: #d00000;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: 600;
+.icon-btn{
+    width:42px;
+    height:42px;
+    border-radius:50%;
+    background:white;
+    cursor:pointer;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#0057b8;
+    font-weight:bold;
 }
 
-.logout-btn:hover {
-    background: #a00000;
+.logout{
+    background:#d00000;
+    border:none;
+    padding:10px 15px;
+    border-radius:8px;
+    color:white;
+    cursor:pointer;
 }
 
-.container {
-    max-width: 1300px;
-    margin: auto;
-    padding: 40px 20px;
+/* DASHBOARD GRID */
+.container{
+    padding:25px;
 }
 
-.welcome {
-    text-align: center;
-    margin-bottom: 40px;
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    gap:15px;
+    margin-top:20px;
 }
 
-.welcome h2 {
-    font-size: 36px;
-    margin-bottom: 10px;
+.card{
+    background:rgba(255,255,255,0.15);
+    padding:20px;
+    border-radius:12px;
+    text-align:center;
+    cursor:pointer;
+    transition:0.3s;
 }
 
-.welcome p {
-    opacity: 0.95;
+.card:hover{
+    transform:translateY(-5px);
+    background:rgba(255,255,255,0.25);
 }
 
-.dashboard-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 20px;
-    margin-bottom: 50px;
+/* CHAT POPUP */
+.chat-popup{
+    position:fixed;
+    bottom:90px;
+    right:20px;
+    width:320px;
+    height:420px;
+    background:white;
+    color:black;
+    border-radius:12px;
+    display:none;
+    flex-direction:column;
+    overflow:hidden;
+    box-shadow:0 10px 30px rgba(0,0,0,0.3);
 }
 
-.card {
-    background: rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.25);
-    border-radius: 18px;
-    padding: 30px 20px;
-    text-align: center;
-    transition: 0.3s;
-    cursor: pointer;
+.chat-header{
+    background:#0057b8;
+    color:white;
+    padding:10px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
 }
 
-.card:hover {
-    transform: translateY(-8px);
-    background: rgba(255, 255, 255, 0.22);
+.users{
+    font-size:12px;
+    padding:10px;
+    border-bottom:1px solid #ddd;
 }
 
-.card h3 {
-    font-size: 18px;
-    line-height: 1.5;
+.chat-box{
+    flex:1;
+    padding:10px;
+    overflow-y:auto;
 }
 
-.chat-section {
-    background: rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.25);
-    border-radius: 20px;
-    padding: 30px;
-    margin-bottom: 40px;
+.chat-input{
+    display:flex;
 }
 
-.chat-section h2 {
-    margin-bottom: 20px;
+.chat-input input{
+    flex:1;
+    padding:10px;
+    border:none;
+    border-top:1px solid #ddd;
 }
 
-.chat-box {
-    height: 250px;
-    background: rgba(255, 255, 255, 0.9);
-    color: #333;
-    border-radius: 10px;
-    padding: 15px;
-    overflow-y: auto;
-    margin-bottom: 15px;
+.chat-input button{
+    padding:10px;
+    background:#0057b8;
+    color:white;
+    border:none;
+    cursor:pointer;
 }
 
-.chat-message {
-    margin-bottom: 10px;
-    padding: 10px;
-    background: #e9f4ff;
-    border-radius: 8px;
-}
-
-.chat-input-area {
-    display: flex;
-    gap: 10px;
-}
-
-.chat-input-area input {
-    flex: 1;
-    padding: 12px;
-    border: none;
-    border-radius: 8px;
-    outline: none;
-}
-
-.chat-input-area button {
-    padding: 12px 20px;
-    border: none;
-    border-radius: 8px;
-    background: #0077b6;
-    color: #fff;
-    cursor: pointer;
-    font-weight: 600;
-}
-
-.chat-input-area button:hover {
-    background: #005f8f;
-}
-
-.footer {
-    text-align: center;
-    padding: 20px;
-    background: rgba(0, 0, 0, 0.2);
-    font-size: 14px;
-}
-
-.footer strong {
-    color: #fff;
-}
-
-@media (max-width: 768px) {
-    .header {
-        flex-direction: column;
-        gap: 15px;
-        text-align: center;
-    }
-
-    .welcome h2 {
-        font-size: 28px;
-    }
-
-    .chat-input-area {
-        flex-direction: column;
-    }
+/* FOOTER SAME AS HEADER */
+footer{
+    margin-top:40px;
+    padding:15px;
+    background:rgba(0,0,0,0.25);
+    backdrop-filter:blur(12px);
+    text-align:center;
 }
 </style>
 </head>
+
 <body>
 
 <script>
-// ==================================================
-// ACCESS CONTROL
-// This dashboard can only be accessed after a
-// successful login from index.html.
-// index.html must set:
-// sessionStorage.setItem('loggedIn', 'true');
-// ==================================================
-if (sessionStorage.getItem('loggedIn') !== 'true') {
-    window.location.href = 'index.html';
+if(sessionStorage.getItem("loggedIn") !== "true"){
+    window.location.href="index.html";
 }
 </script>
 
-<header class="header">
-    <div class="header-left">
-        <img src="logotpng.jfif" alt="Telikom PNG Logo">
-        <h1>Engineers Dashboard</h1>
+<header>
+    <div class="left">
+        <img src="logotpng.jfif">
+        <h3>Engineers Dashboard</h3>
     </div>
 
-    <button class="logout-btn" onclick="logout()">Logout</button>
+    <div class="right">
+
+        <!-- LIVE CHAT ICON -->
+        <div class="icon-btn" onclick="toggleChat()">💬</div>
+
+        <button class="logout" onclick="logout()">Logout</button>
+    </div>
 </header>
 
 <div class="container">
+    <h2>Network Systems</h2>
 
-    <section class="welcome">
-        <h2>Welcome to Telikom PNG Engineering Portal</h2>
-        <p>Select a module below to access engineering systems and reports.</p>
-    </section>
-
-    <section class="dashboard-grid">
-        <div class="card" onclick="openModule('Projects')"><h3>1. Projects</h3></div>
-        <div class="card" onclick="openModule('Network Health Audit')"><h3>2. Network Health Audit</h3></div>
-        <div class="card" onclick="openModule('Refueling')"><h3>3. Refueling</h3></div>
-        <div class="card" onclick="openModule('Network Transmission')"><h3>4. Network Transmission</h3></div>
-        <div class="card" onclick="openModule('Radio Frequency')"><h3>5. Radio Frequency</h3></div>
-        <div class="card" onclick="openModule('Base Station Systems')"><h3>6. Base Station Systems</h3></div>
-        <div class="card" onclick="openModule('Network Operations Center')"><h3>7. Network Operations Center</h3></div>
-        <div class="card" onclick="openModule('Core Access Network')"><h3>8. Core Access Network</h3></div>
-        <div class="card" onclick="openModule('Network Infrastructure')"><h3>9. Network Infrastructure</h3></div>
-        <div class="card" onclick="openModule('Centers')"><h3>10. Centers</h3></div>
-    </section>
-
-    <section class="chat-section">
-        <h2>LiveWire Engineer Chat</h2>
-        <div class="chat-box" id="chatBox">
-            <div class="chat-message"><strong>System:</strong> Welcome to LiveWire Chat.</div>
-        </div>
-
-        <div class="chat-input-area">
-            <input type="text" id="chatInput" placeholder="Type your message here...">
-            <button onclick="sendMessage()">Send</button>
-        </div>
-    </section>
-
+    <div class="grid">
+        <div class="card">Projects</div>
+        <div class="card">Network Health Audit</div>
+        <div class="card">Refueling</div>
+        <div class="card">Transmission</div>
+        <div class="card">Radio Frequency</div>
+        <div class="card">Base Station</div>
+        <div class="card">NOC</div>
+        <div class="card">Core Network</div>
+        <div class="card">Infrastructure</div>
+        <div class="card">Centers</div>
+    </div>
 </div>
 
-<footer class="footer">
-    Powered By: <strong>Iso Yawi | System Creator</strong>
+<!-- CHAT POPUP -->
+<div class="chat-popup" id="chatPopup">
+
+    <div class="chat-header">
+        <span>LiveWire Chat</span>
+        <button onclick="toggleChat()">X</button>
+    </div>
+
+    <div class="users">
+        🟢 Online: Engineer1, Engineer2<br>
+        ⚪ Offline: Engineer3
+    </div>
+
+    <div class="chat-box" id="chatBox">
+        <p><b>System:</b> Connected to LiveWire</p>
+    </div>
+
+    <div class="chat-input">
+        <input id="msg" placeholder="Message...">
+        <button onclick="send()">Send</button>
+    </div>
+</div>
+
+<footer>
+    Powered By: Iso Yawi | System Creator
 </footer>
 
 <script>
-function openModule(moduleName) {
-    alert(moduleName + ' module will open here.');
+
+function logout(){
+    sessionStorage.removeItem("loggedIn");
+    window.location.href="index.html";
 }
 
-function logout() {
-    sessionStorage.removeItem('loggedIn');
-    window.location.href = 'index.html';
+function toggleChat(){
+    let chat=document.getElementById("chatPopup");
+    chat.style.display = chat.style.display==="flex" ? "none":"flex";
 }
 
-function sendMessage() {
-    const input = document.getElementById('chatInput');
-    const chatBox = document.getElementById('chatBox');
-    const message = input.value.trim();
+function send(){
+    let input=document.getElementById("msg");
+    let box=document.getElementById("chatBox");
 
-    if (message === '') return;
+    if(input.value==="") return;
 
-    const msgDiv = document.createElement('div');
-    msgDiv.className = 'chat-message';
-    msgDiv.innerHTML = '<strong>Engineer:</strong> ' + message;
+    let p=document.createElement("p");
+    p.innerHTML="<b>You:</b> "+input.value;
+    box.appendChild(p);
 
-    chatBox.appendChild(msgDiv);
-    chatBox.scrollTop = chatBox.scrollHeight;
-    input.value = '';
+    input.value="";
+    box.scrollTop=box.scrollHeight;
 }
-
-// Send message on Enter key
-const chatInput = document.getElementById('chatInput');
-chatInput.addEventListener('keypress', function(event) {
-    if (event.key === 'Enter') {
-        event.preventDefault();
-        sendMessage();
-    }
-});
 </script>
 
 </body>
