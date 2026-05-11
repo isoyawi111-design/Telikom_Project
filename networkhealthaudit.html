@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Telikom PNG | Network Health Audit</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #0057b8, #00a2ff);
+    color: white;
+    min-height: 100vh;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 25px;
+    background: rgba(0,0,0,0.25);
+    backdrop-filter: blur(12px);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.header-left img {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    background: white;
+    padding: 4px;
+}
+
+.btn {
+    border: none;
+    padding: 10px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    color: white;
+}
+
+.back-btn { background: #00b894; }
+.save-btn { background: #003b73; }
+.logout-btn { background: #d00000; }
+
+.container {
+    max-width: 1400px;
+    margin: auto;
+    padding: 30px 20px 100px;
+}
+
+.card {
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(18px);
+    border: 1px solid rgba(255,255,255,0.25);
+    border-radius: 20px;
+    padding: 30px;
+    margin-bottom: 25px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+}
+
+.card h2 {
+    margin-bottom: 20px;
+    border-bottom: 1px solid rgba(255,255,255,0.3);
+    padding-bottom: 10px;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 15px;
+}
+
+input,
+select,
+textarea {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    outline: none;
+    font-size: 14px;
+}
+
+textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 600;
+}
+
+.field {
+    margin-bottom: 15px;
+}
+
+.full {
+    grid-column: 1 / -1;
+}
+
+.actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.message {
+    margin-top: 15px;
+    font-weight: 600;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    padding: 12px;
+    background: rgba(0,0,0,0.35);
+}
+
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+}
+</style>
+</head>
+<body>
+
+<script>
+if (sessionStorage.getItem('loggedIn') !== 'true') {
+    window.location.href = 'index.html';
+}
+</script>
+
+<header>
+    <div class="header-left">
+        <img src="logotpng.jfif" alt="Telikom PNG Logo">
+        <div>
+            <h2>Network Health Audit</h2>
+            <small id="auditUser"></small>
+        </div>
+    </div>
+
+    <div class="actions">
+        <button class="btn back-btn" onclick="window.location.href='engineerdashboard.html'">
+            Back to Dashboard
+        </button>
+        <button class="btn save-btn" onclick="saveAudit()">
+            Save Audit
+        </button>
+        <button class="btn logout-btn" onclick="logout()">
+            Logout
+        </button>
+    </div>
+</header>
+
+<div class="container">
+
+    <!-- SITE DETAILS -->
+    <div class="card">
+        <h2>1. Site Details</h2>
+        <div class="form-grid">
+            <input id="siteName" placeholder="Site Name">
+            <input id="siteId" placeholder="Site ID">
+
+            <select id="region">
+                <option>Southern Region</option>
+                <option>Momase Region</option>
+                <option> Highlands Region</option>
+                <option>New Guinea Islands Region</option>
+            </select>
+
+            <select id="province">
+                <option>Morobe</option>
+                <option>National Capital District</option>
+                <option>Central</option>
+                <option>Milne Bay</option>
+                <option>Oro</option>
+                <option>Western</option>
+                <option>Gulf</option>
+                <option>Enga</option>
+                <option>Western Highlands</option>
+                <option>Jiwaka</option>
+                <option>Simbu</option>
+                <option>Eastern Highlands</option>
+                <option>Southern Highlands</option>
+                <option>Hela</option>
+                <option>West Sepik</option>
+                <option>East Sepik</option>
+                <option>Madang</option>
+                <option>Manus</option>
+                <option>New Ireland</option>
+                <option>East New Britain</option>
+                <option>West New Britain</option>
+                <option>Bougainville</option>
+            </select>
+
+            <input id="latitude" placeholder="Latitude">
+            <input id="longitude" placeholder="Longitude">
+            <input id="altitude" placeholder="Altitude (m)">
+            <input id="auditDate" type="date">
+        </div>
+
+        <div class="field">
+            <label>Existing Issues</label>
+            <textarea id="existingIssues"></textarea>
+        </div>
+    </div>
+
+    <!-- TOWER -->
+    <div class="card">
+        <h2>2. Tower Information</h2>
+        <div class="form-grid">
+            <select id="towerType">
+                <option>Monopole 30M RDS</option>
+                <option>45M RDS</option>
+                <option>45M SST</option>
+                <option>60M SST</option>
+                <option>60M RDS</option>
+                <option>60M Grillage</option>
+                <option>80M SST</option>
+                <option>80M RDS</option>
+                <option>100M SST</option>
+                <option>100M Grillage</option>
+            </select>
+
+            <select id="towerWorking">
+                <option>Yes</option>
+                <option>No</option>
+            </select>
+
+            <select id="beeHive">
+                <option>No Bee Hive</option>
+                <option>Bee Hive Present</option>
+            </select>
+
+            <select id="snakes">
+                <option>No Snakes</option>
+                <option>Snakes Present</option>
+            </select>
+        </div>
+
+        <div class="field">
+            <label>Tower Hazards / Safety Concerns</label>
+            <textarea id="towerHazards"></textarea>
+        </div>
+    </div>
+
+    <!-- RF -->
+    <div class="card">
+        <h2>3. RF Audit</h2>
+        <div class="form-grid">
+            <input placeholder="RF Vendor(s)">
+            <input placeholder="Directional Antennas Count">
+            <input placeholder="RRU Type(s)">
+            <input placeholder="BBU Connected (Yes/No)">
+            <input placeholder="Cable Type 1 - Fiber">
+            <input placeholder="Cable Type 2 - Coaxial">
+            <input placeholder="Cable Type 3">
+            <input placeholder="Fiber Length of Each Cable">
+        </div>
+
+        <div class="field">
+            <label>RF Issues Faced</label>
+            <textarea></textarea>
+        </div>
+    </div>
+
+    <!-- TRANSMISSION -->
+    <div class="card">
+        <h2>4. Network Transmission Audit</h2>
+        <div class="form-grid">
+            <input placeholder="Number of Transmission Antennas">
+            <input placeholder="ODU Type(s)">
+            <input placeholder="IDU Exists (Yes/No)">
+            <input placeholder="Number of Links">
+            <input placeholder="Link Directions">
+            <input placeholder="Cable Type 1 - Fiber">
+            <input placeholder="Cable Type 2 - Coaxial">
+            <input placeholder="Cable Type 3">
+            <input placeholder="Fiber Length of Each Cable">
+        </div>
+
+        <div class="field">
+            <label>Transmission Issues</label>
+            <textarea></textarea>
+        </div>
+    </div>
+
+    <!-- POWER -->
+    <div class="card">
+        <h2>5. Power Audit</h2>
+        <div class="form-grid">
+            <select>
+                <option>Grid</option>
+                <option>Off Grid</option>
+                <option>Hybrid</option>
+            </select>
+
+            <select>
+                <option>Solar Connected - Yes</option>
+                <option>Solar Connected - No</option>
+            </select>
+
+            <input placeholder="Number of Solar Panels">
+            <input placeholder="Total Solar Output (kW)">
+            <input placeholder="Solar Battery Installed (Yes/No)">
+            <input placeholder="Battery Type">
+            <input placeholder="Battery Quantity">
+            <input placeholder="Generator Type">
+            <input placeholder="Generator KVA">
+        </div>
+
+        <div class="field">
+            <label>Power Faults</label>
+            <textarea></textarea>
+        </div>
+    </div>
+
+    <!-- PHOTOS -->
+    <div class="card">
+        <h2>6. Site Photos</h2>
+        <div class="form-grid">
+            <div class="field">
+                <label>Road Access Photo</label>
+                <input type="file" accept="image/*" capture="environment">
+            </div>
+
+            <div class="field">
+                <label>Panoramic View Photo</label>
+                <input type="file" accept="image/*" capture="environment">
+            </div>
+
+            <div class="field">
+                <label>Existing Equipment Photo</label>
+                <input type="file" accept="image/*" capture="environment">
+            </div>
+
+            <div class="field">
+                <label>Additional Photos</label>
+                <input type="file" accept="image/*" multiple>
+            </div>
+        </div>
+
+        <p style="margin-top:10px; opacity:0.9;">
+            Note: Mobile devices can capture GPS coordinates and timestamps in image metadata.
+        </p>
+    </div>
+
+    <!-- COMMENTS -->
+    <div class="card">
+        <h2>7. Final Comments & Recommendations</h2>
+        <textarea id="finalComments" placeholder="Recommendations, urgent rectification items, spare parts required, access concerns, security observations..."></textarea>
+
+        <div class="message" id="message"></div>
+    </div>
+
+</div>
+
+<footer>
+    Powered By: <strong>Iso Yawi | System Creator</strong>
+</footer>
+
+<script>
+const username = sessionStorage.getItem('username') || 'Engineer';
+document.getElementById('auditUser').textContent = username;
+
+function saveAudit() {
+    const audits = JSON.parse(localStorage.getItem('networkHealthAudits')) || [];
+
+    const audit = {
+        siteName: document.getElementById('siteName').value,
+        siteId: document.getElementById('siteId').value,
+        region: document.getElementById('region').value,
+        province: document.getElementById('province').value,
+        latitude: document.getElementById('latitude').value,
+        longitude: document.getElementById('longitude').value,
+        towerType: document.getElementById('towerType').value,
+        existingIssues: document.getElementById('existingIssues').value,
+        finalComments: document.getElementById('finalComments').value,
+        auditedBy: username,
+        savedAt: new Date().toLocaleString()
+    };
+
+    audits.push(audit);
+    localStorage.setItem('networkHealthAudits', JSON.stringify(audits));
+
+    const message = document.getElementById('message');
+    message.style.color = '#b7ffb7';
+    message.textContent = 'Network Health Audit saved successfully.';
+}
+
+function logout() {
+    sessionStorage.clear();
+    window.location.href = 'index.html';
+}
+
+// Auto-fill current date
+const auditDate = document.getElementById('auditDate');
+if (auditDate) {
+    auditDate.value = new Date().toISOString().split('T')[0];
+}
+
+// Get GPS location
+if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function(position) {
+        document.getElementById('latitude').value = position.coords.latitude.toFixed(6);
+        document.getElementById('longitude').value = position.coords.longitude.toFixed(6);
+    });
+}
+</script>
+
+</body>
+</html>
+
+
+This page provides a comprehensive telecom Network Health Audit form suitable for Telikom PNG field engineers and can be expanded further as needed.
