@@ -184,34 +184,120 @@ body {
 
 </div>
 
-<!-- ✅ LOGIN SCRIPT (FIXED) -->
 <script>
-document.getElementById("loginForm").addEventListener("submit", function(e) {
-    e.preventDefault();
+document.addEventListener("DOMContentLoaded", function () {
 
-    const username = document.getElementById("username").value.trim();
-    const password = document.getElementById("password").value.trim();
+    // =====================================================
+    // INITIALIZE DEFAULT ADMIN ACCOUNT
+    // =====================================================
+    let users = JSON.parse(localStorage.getItem("engineerAccounts")) || [];
+
+    // Check if Admin account exists
+    const adminExists = users.some(
+        user => user.username === "Admin"
+    );
+
+    // Create default Admin if missing
+    if (!adminExists) {
+        users.push({
+            username: "Admin",
+            password: "Admin123",
+            role: "Administrator"
+        });
+
+        localStorage.setItem(
+            "engineerAccounts",
+            JSON.stringify(users)
+        );
+    }
+
+    // =====================================================
+    // LOGIN FORM ELEMENTS
+    // =====================================================
+    const loginForm = document.getElementById("loginForm");
     const message = document.getElementById("message");
 
-    if (username === "Admin" && password === "Admin") {
+    // If login form does not exist, stop script
+    if (!loginForm) return;
 
-        // Save login session
-        sessionStorage.setItem("loggedIn", "true");
+    // =====================================================
+    // LOGIN EVENT
+    // =====================================================
+    loginForm.addEventListener("submit", function (e) {
+        e.preventDefault();
 
-        message.style.color = "#b7ffb7";
-        message.innerText = "Login successful... Redirecting...";
+        const username = document
+            .getElementById("username")
+            .value
+            .trim();
 
-        // Redirect to dashboard
-        setTimeout(() => {
+        const password = document
+            .getElementById("password")
+            .value
+            .trim();
+
+        // Reload latest users from localStorage
+        const accounts = JSON.parse(
+            localStorage.getItem("engineerAccounts")
+        ) || [];
+
+        // Find matching account
+        const user = accounts.find(account =>
+            account.username === username &&
+            account.password === password
+        );
+
+        // =================================================
+        // SUCCESSFUL LOGIN
+        // =================================================
+        if (user) {
+
+            // Save session info
+            sessionStorage.setItem("loggedIn", "true");
+            sessionStorage.setItem("username", user.username);
+            sessionStorage.setItem("role", user.role);
+
+            // Success message
+            if (message) {
+                message.className = "message success";
+                message.textContent = "Login successful...";
+            }
+
+            // Redirect based on role
+            setTimeout(() => {
+                if (user.role === "Administrator") {
+                    window.location.href = "Admindashboard.html";
+                } else {
+                    window.location.href = "dashboard.html";
+                }
+            }, 800);
+
+        } else {
+
+            // =================================================
+            // INVALID LOGIN
+            // =================================================
+            if (message) {
+                message.className = "message error";
+                message.textContent =
+                    "Invalid username or password.";
+            }
+        }
+    });
+
+    // =====================================================
+    // AUTO REDIRECT IF ALREADY LOGGED IN
+    // =====================================================
+    if (sessionStorage.getItem("loggedIn") === "true") {
+        const role = sessionStorage.getItem("role");
+
+        if (role === "Administrator") {
+            window.location.href = "Admindashboard.html";
+        } else {
             window.location.href = "dashboard.html";
-        }, 1000);
-
-    } else {
-        message.style.color = "#ffd6d6";
-        message.innerText = "Invalid Username or Password!";
+        }
     }
 });
 </script>
-
 </body>
 </html>
