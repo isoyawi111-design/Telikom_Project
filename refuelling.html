@@ -3,402 +3,304 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Telikom PNG Refuelling System</title>
+<title>Telikom PNG | Refuelling System</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
 body {
-    font-family: Arial;
-    background:#f4f6f8;
-    margin:0;
-    padding:10px;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #0057b8, #00a2ff);
+    color: white;
 }
 
+/* HEADER (LOGIN STYLE) */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 25px;
+    background: rgba(0,0,0,0.25);
+    backdrop-filter: blur(12px);
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.header-left img {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    background: white;
+    padding: 4px;
+}
+
+.header-right {
+    display: flex;
+    gap: 10px;
+}
+
+.btn {
+    border: none;
+    padding: 10px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    color: white;
+}
+
+.back-btn { background: #00b894; }
+.logout-btn { background: #d00000; }
+
+/* MAIN */
 .container {
-    max-width:900px;
-    margin:auto;
-    background:white;
-    padding:15px;
-    border-radius:10px;
+    max-width: 1200px;
+    margin: auto;
+    padding: 25px 20px 80px;
 }
 
-h1 {text-align:center;color:#005baa;}
-
-.row {
-    display:flex;
-    gap:10px;
-    flex-wrap:wrap;
+.card {
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(18px);
+    border-radius: 20px;
+    padding: 25px;
 }
 
-.form-group {
-    flex:1;
-    min-width:140px;
-}
-
-label {
-    font-size:13px;
-    font-weight:bold;
+/* FORM */
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 12px;
 }
 
 input, select, textarea {
-    width:100%;
-    padding:6px;
-    font-size:13px;
-    margin-top:4px;
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    outline: none;
 }
+
+textarea { min-height: 80px; }
 
 button {
-    background:#005baa;
-    color:white;
-    border:none;
-    padding:8px;
-    border-radius:5px;
-    cursor:pointer;
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    background: #003b73;
+    color: white;
+    cursor: pointer;
 }
 
+button:hover { background: #002855; }
+
+.section-title {
+    margin: 20px 0 10px;
+}
+
+/* IMAGES */
 img {
-    width:100%;
-    margin-top:10px;
-    border-radius:8px;
+    width: 100%;
+    border-radius: 10px;
+    margin-top: 8px;
 }
 
-video {width:100%; display:none;}
-
-.footer {
-    text-align:center;
-    font-size:12px;
-    margin-top:20px;
+/* FOOTER */
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    padding: 12px;
+    background: rgba(0,0,0,0.3);
+    backdrop-filter: blur(10px);
 }
+
+video { display:none; width:100%; margin-top:10px; }
+canvas { display:none; }
+
 </style>
 </head>
 
 <body>
 
+<script>
+if (sessionStorage.getItem("loggedIn") !== "true") {
+    window.location.href = "index.html";
+}
+</script>
+
+<!-- HEADER -->
+<header>
+    <div class="header-left">
+        <img src="logotpng.jfif">
+        <div>
+            <h3>Telikom PNG Refuelling</h3>
+            <small id="user"></small>
+        </div>
+    </div>
+
+    <div class="header-right">
+        <button class="btn back-btn" onclick="window.location.href='engineerdashboard.html'">Dashboard</button>
+        <button class="btn logout-btn" onclick="logout()">Logout</button>
+    </div>
+</header>
+
+<!-- BODY -->
 <div class="container">
+<div class="card">
 
-<h1>Telikom PNG Refuelling</h1>
+<h2 class="section-title">Site Information</h2>
 
-<form id="fuelForm">
-
-<!-- SITE INFO -->
-<!-- ================= BODY ONLY (REPLACE YOUR FORM AREA WITH THIS) ================= -->
-
-<div class="container">
-
-<h2 style="text-align:center; color:#005baa; margin-bottom:15px;">
-    Refuelling Management Form
-</h2>
-
-<form id="fuelForm">
-
-<!-- SITE INFO -->
-<div class="row">
-    <div class="form-group">
-        <label>Field Engineer</label>
-        <input id="engineer" required>
-    </div>
-
-    <div class="form-group">
-        <label>Additional Team</label>
-        <input id="team">
-    </div>
+<div class="form-grid">
+<input id="engineer" placeholder="Engineer">
+<input id="siteName" placeholder="Site Name">
+<input id="siteId" placeholder="Site ID">
+<input type="date" id="date">
+<input type="time" id="time">
 </div>
 
-<div class="row">
-    <div class="form-group">
-        <label>Date</label>
-        <input type="date" id="date" required>
-    </div>
+<h2 class="section-title">Region</h2>
 
-    <div class="form-group">
-        <label>Time</label>
-        <input type="time" id="time" required>
-    </div>
-</div>
-
-<div class="row">
-    <div class="form-group">
-        <label>Site Name</label>
-        <input id="siteName" required>
-    </div>
-
-    <div class="form-group">
-        <label>Site ID</label>
-        <input id="siteId" required>
-    </div>
-</div>
-
-<!-- REGION -->
-<div class="row">
-    <div class="form-group">
-        <label>Region</label>
-        <select id="region" onchange="updateProvinces()">
-            <option value="">Select Region</option>
-            <option value="MomaseEHP">Momase + EHP</option>
-            <option value="Highlands">Highlands</option>
-            <option value="Southern">Southern</option>
-            <option value="NGI">New Guinea Islands</option>
-        </select>
-    </div>
-
-    <div class="form-group">
-        <label>Province</label>
-        <select id="province">
-            <option>Select Province</option>
-        </select>
-    </div>
-</div>
-
-<!-- TOWER -->
-<div class="form-group">
-    <label>Tower Height</label>
-    <select id="tower">
-        <option>23 Meter Monopole</option>
-        <option>30M RDS</option>
-        <option>45M RDS</option>
-        <option>45M SST</option>
-        <option>60M RDS</option>
-        <option>60M SST</option>
-        <option>80M SST</option>
-        <option>100M SST</option>
-        <option>110M SST</option>
-    </select>
-</div>
-
-<!-- GENSET -->
-<h3 style="margin-top:15px;">Refuelling Details</h3>
-
-<label>Genset Type</label>
-<select id="genset">
-    <option>Yanhan 8KVA</option>
-    <option>Yanhan 17KVA</option>
-    <option>Yanhan 24KVA</option>
-    <option>CCTC 11KVA</option>
-    <option>CCTC 17KVA</option>
-    <option>CCTC 24KVA</option>
-    <option>FG Wilson 15KVA</option>
-    <option>Polar Power</option>
+<div class="form-grid">
+<select id="region" onchange="updateProvinces()">
+<option value="">Select Region</option>
+<option>MomaseEHP</option>
+<option>Highlands</option>
+<option>Southern</option>
+<option>NGI</option>
 </select>
 
-<div class="row">
-    <div class="form-group">
-        <label>Engine Oil Level</label>
-        <input type="number" id="oilLevel">
-    </div>
-
-    <div class="form-group">
-        <label>Coolant Level</label>
-        <input type="number" id="coolantLevel">
-    </div>
-
-    <div class="form-group">
-        <label>RPM</label>
-        <input type="number" id="rpm">
-    </div>
+<select id="province"></select>
 </div>
 
-<!-- FUEL -->
-<div class="row">
-    <div class="form-group">
-        <label>Fuel Before</label>
-        <input type="number" id="before">
-    </div>
+<h2 class="section-title">Fuel Data</h2>
 
-    <div class="form-group">
-        <button type="button" onclick="openCamera('BEFORE')">Before Photo</button>
-    </div>
+<div class="form-grid">
+<input id="before" placeholder="Fuel Before">
+<input id="added" placeholder="Fuel Added">
+<input id="after" placeholder="Fuel After">
 </div>
 
-<div class="row">
-    <div class="form-group">
-        <label>Fuel Top-Up</label>
-        <input type="number" id="added">
-    </div>
+<button onclick="calculate()">Calculate</button>
+<div id="calc"></div>
 
-    <div class="form-group">
-        <button type="button" onclick="openCamera('TOPUP')">Top-Up Photo</button>
-    </div>
-</div>
+<h2 class="section-title">Photos</h2>
 
-<div class="row">
-    <div class="form-group">
-        <label>Fuel After</label>
-        <input type="number" id="after">
-    </div>
-
-    <div class="form-group">
-        <button type="button" onclick="openCamera('AFTER')">After Photo</button>
-    </div>
-</div>
-
-<!-- PPL -->
-<h3>Power</h3>
-
-<div class="row">
-    <div class="form-group">
-        <label>PPL Connected?</label>
-        <select id="ppl" onchange="togglePPL()">
-            <option value="No">No</option>
-            <option value="Yes">Yes</option>
-        </select>
-    </div>
-
-    <div class="form-group" id="pplFields" style="display:none;">
-        <input placeholder="Meter Number" id="meter">
-        <input placeholder="Reading" id="reading">
-    </div>
-</div>
-
-<!-- CAMERA PREVIEW -->
-<video id="video" autoplay playsinline></video>
-<canvas id="canvas"></canvas>
-
-<!-- PHOTOS -->
-<h3>Before Photo</h3>
+<button onclick="openCamera('BEFORE')">Before Photo</button>
 <img id="imgBefore">
 
-<h3>Top-Up Photo</h3>
+<button onclick="openCamera('TOPUP')">TopUp Photo</button>
 <img id="imgTopup">
 
-<h3>After Photo</h3>
+<button onclick="openCamera('AFTER')">After Photo</button>
 <img id="imgAfter">
 
-<!-- DRIVER -->
-<h3>Driver Details</h3>
+<video id="video" autoplay></video>
+<canvas id="canvas"></canvas>
 
-<input placeholder="Driver Name">
-<input placeholder="Vehicle Reg">
-<textarea placeholder="Comments"></textarea>
-
-<!-- SUBMIT -->
-<div class="row">
-    <div class="form-group">
-        <button type="submit">Submit Refuelling</button>
-    </div>
-
-    <div class="form-group">
-        <button type="button" onclick="logout()">Logout</button>
-    </div>
-</div>
-
-</form>
+<h2 class="section-title">Submit</h2>
+<button onclick="submitForm()">Submit Refuelling</button>
 
 </div>
-
-<div class="footer">
-Telikom PNG Ltd | Powered by Iso Yawi | System Creator
 </div>
 
-</div>
+<!-- FOOTER -->
+<footer>
+Telikom PNG Ltd | Refuelling System | Powered by Iso Yawi
+</footer>
 
 <script>
 
-/* PPL TOGGLE */
-function togglePPL(){
-document.getElementById("pplFields").style.display =
-document.getElementById("ppl").value==="Yes" ? "block" : "none";
+document.getElementById("user").innerText =
+sessionStorage.getItem("username") || "Engineer";
+
+/* REGION */
+function updateProvinces(){
+let r = region.value;
+let p = province;
+let list = [];
+
+if(r=="MomaseEHP") list=["Morobe","Madang","Sepik"];
+if(r=="Highlands") list=["Simbu","Hela","Enga"];
+if(r=="Southern") list=["Central","Gulf","Oro"];
+if(r=="NGI") list=["ENB","WNB","New Ireland"];
+
+p.innerHTML="";
+list.forEach(x=>{
+let o=document.createElement("option");
+o.text=x;
+p.appendChild(o);
+});
+}
+
+/* CALC */
+function calculate(){
+let exp = (+before.value||0)+(+added.value||0);
+let diff = (+after.value||0)-exp;
+calc.innerText = "Expected: "+exp+" L | Diff: "+diff+" L";
 }
 
 /* CAMERA */
-let stream;
-let mode="";
+let stream, mode;
 
-function openCamera(type){
+function openCamera(t){
+mode=t;
 
-if(!siteName.value || !siteId.value || !engineer.value){
-alert("Enter Site Name, Site ID & Engineer first");
-return;
-}
-
-mode=type;
-
-navigator.mediaDevices.getUserMedia({
-video:{facingMode:"environment"}
-})
+navigator.mediaDevices.getUserMedia({video:{facingMode:"environment"}})
 .then(s=>{
 stream=s;
 video.srcObject=s;
 video.style.display="block";
-setTimeout(capture,2000);
+setTimeout(takePhoto,2000);
 });
 }
 
-function capture(){
-
+function takePhoto(){
 canvas.width=video.videoWidth;
 canvas.height=video.videoHeight;
-
-const ctx=canvas.getContext("2d");
+let ctx=canvas.getContext("2d");
 ctx.drawImage(video,0,0);
 
-let label={
-BEFORE:"BEFORE REFUELLING",
-TOPUP:"REFUELLING IN PROGRESS",
-AFTER:"AFTER REFUELLING"
-}[mode];
-
+let label = mode+" PHOTO";
 ctx.fillStyle="red";
-ctx.font="18px Arial";
-
 ctx.fillText("Telikom PNG",20,30);
 ctx.fillText(label,20,60);
-ctx.fillText(new Date().toLocaleString(),20,90);
-ctx.fillText(siteName.value+" | "+siteId.value,20,120);
 
-let img=canvas.toDataURL("image/png");
+let img = canvas.toDataURL("image/png");
 
-if(mode==="BEFORE") imgBefore.src=img;
-if(mode==="TOPUP") imgTopup.src=img;
-if(mode==="AFTER") imgAfter.src=img;
+if(mode=="BEFORE") imgBefore.src=img;
+if(mode=="TOPUP") imgTopup.src=img;
+if(mode=="AFTER") imgAfter.src=img;
 
 stream.getTracks().forEach(t=>t.stop());
 video.style.display="none";
 }
 
-/* RESET */
-function resetPhoto(type){
-if(type==="BEFORE") imgBefore.src="";
-if(type==="TOPUP") imgTopup.src="";
-if(type==="AFTER") imgAfter.src="";
-}
-
-/* CALC */
-function calculate(){
-let expected=(+before.value||0)+(+added.value||0);
-let diff=(+after.value||0)-expected;
-}
-
-/* REGION */
-function updateProvinces(){
-
-const region = document.getElementById("region").value;
-const province = document.getElementById("province");
-
-let list = [];
-
-if(region === "MomaseEHP") list=["Morobe","Madang","East Sepik","Sandaun","Eastern Highlands"];
-if(region === "Highlands") list=["Simbu","Western Highlands","Enga","Southern Highlands","Hela","Jiwaka"];
-if(region === "Southern") list=["Central","Gulf","Oro","Milne Bay","Western","NCD"];
-if(region === "NGI") list=["East New Britain","West New Britain","New Ireland","Bougainville"];
-
-province.innerHTML="<option>Select Province</option>";
-
-list.forEach(p=>{
-let opt=document.createElement("option");
-opt.text=p;
-province.appendChild(opt);
-});
-}
-
 /* SUBMIT */
-fuelForm.onsubmit=e=>{
-e.preventDefault();
+function submitForm(){
+if(!before.value||!added.value||!after.value||
+!imgBefore.src||!imgTopup.src||!imgAfter.src){
+alert("Fill all fields + photos");
+return;
+}
 alert("Submitted Successfully");
-};
+}
 
 /* LOGOUT */
 function logout(){
-localStorage.removeItem("loggedIn");
-window.location.href="index.html";
+sessionStorage.clear();
+location.href="index.html";
 }
 
 </script>
