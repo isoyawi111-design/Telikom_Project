@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Telikom PNG | System Administrator Dashboard</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #0057b8, #00a2ff);
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ================= HEADER ================= */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 25px;
+    background: rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.header-left img {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    background: #fff;
+    padding: 4px;
+    object-fit: contain;
+}
+
+.header-left h1 {
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.header-right {
+    display: flex;
+    gap: 10px;
+}
+
+.btn {
+    padding: 10px 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.dashboard-btn {
+    background: #00b894;
+    color: #fff;
+}
+
+.dashboard-btn:hover {
+    background: #009e7d;
+}
+
+.logout-btn {
+    background: #d00000;
+    color: #fff;
+}
+
+.logout-btn:hover {
+    background: #a00000;
+}
+
+/* ================= MAIN ================= */
+.container {
+    flex: 1;
+    max-width: 1200px;
+    width: 100%;
+    margin: auto;
+    padding: 30px 20px 90px;
+}
+
+.card {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 20px;
+    padding: 30px;
+    margin-bottom: 25px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.card h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+/* ================= FORM ================= */
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 15px;
+}
+
+input, select {
+    width: 100%;
+    padding: 12px 14px;
+    border: none;
+    border-radius: 8px;
+    outline: none;
+    font-size: 14px;
+}
+
+.action-btn {
+    margin-top: 15px;
+    background: #003b73;
+    color: #fff;
+}
+
+.action-btn:hover {
+    background: #002855;
+}
+
+/* ================= TABLE ================= */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: rgba(255,255,255,0.1);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+}
+
+th {
+    background: rgba(0,0,0,0.2);
+}
+
+tr:nth-child(even) {
+    background: rgba(255,255,255,0.05);
+}
+
+.table-btn {
+    padding: 6px 10px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-right: 5px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.reset-btn {
+    background: #f39c12;
+    color: #fff;
+}
+
+.delete-btn {
+    background: #e74c3c;
+    color: #fff;
+}
+
+/* ================= MESSAGE ================= */
+.message {
+    margin-top: 15px;
+    font-weight: 500;
+}
+
+/* ================= FOOTER ================= */
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    padding: 12px;
+    background: rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    font-size: 14px;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 768px) {
+    .header-left h1 {
+        font-size: 18px;
+    }
+
+    header {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+
+    .header-right {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    table {
+        font-size: 12px;
+    }
+}
+</style>
+</head>
+<body>
+
+<script>
+/* ================= ACCESS CONTROL ================= */
+if (sessionStorage.getItem("loggedIn") !== "true") {
+    window.location.href = "index.html";
+}
+</script>
+
+<!-- ================= HEADER ================= -->
+<header>
+    <div class="header-left">
+        <img src="logotpng.jfif" alt="Telikom PNG Logo">
+        <h1>System Administrator Dashboard</h1>
+    </div>
+
+    <div class="header-right">
+        <button class="btn dashboard-btn" onclick="window.location.href='dashboard.html'">
+            Engineers Dashboard
+        </button>
+        <button class="btn logout-btn" onclick="logout()">
+            Logout
+        </button>
+    </div>
+</header>
+
+<!-- ================= MAIN CONTENT ================= -->
+<div class="container">
+
+    <!-- CREATE ACCOUNT -->
+    <div class="card">
+        <h2>Create Engineer Account</h2>
+
+        <div class="form-grid">
+            <input type="text" id="newUsername" placeholder="Username">
+            <input type="password" id="newPassword" placeholder="Password">
+            <select id="newRole">
+                <option value="Engineer">Engineer</option>
+                <option value="Senior Engineer">Senior Engineer</option>
+                <option value="Supervisor">Supervisor</option>
+                <option value="Administrator">Administrator</option>
+            </select>
+        </div>
+
+        <button class="btn action-btn" onclick="createAccount()">
+            Create Account
+        </button>
+
+        <div class="message" id="message"></div>
+    </div>
+
+    <!-- USER MANAGEMENT -->
+    <div class="card">
+        <h2>Engineer Account Management</h2>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Username</th>
+                    <th>Role</th>
+                    <th>Password</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="userTableBody">
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+    Powered By: <strong>Iso Yawi | System Creator</strong>
+</footer>
+
+<script>
+/* ================= LOCAL STORAGE USERS ================= */
+let users = JSON.parse(localStorage.getItem("engineerAccounts")) || [
+    {
+        username: "Admin",
+        password: "Admin",
+        role: "Administrator"
+    }
+];
+
+/* Save users to browser storage */
+function saveUsers() {
+    localStorage.setItem("engineerAccounts", JSON.stringify(users));
+}
+
+/* Display all users */
+function renderUsers() {
+    const tbody = document.getElementById("userTableBody");
+    tbody.innerHTML = "";
+
+    users.forEach((user, index) => {
+        const row = `
+            <tr>
+                <td>${user.username}</td>
+                <td>${user.role}</td>
+                <td>${user.password}</td>
+                <td>
+                    <button class="table-btn reset-btn"
+                        onclick="resetPassword(${index})">
+                        Reset Password
+                    </button>
+                    ${
+                        user.username !== "Admin"
+                        ? `<button class="table-btn delete-btn"
+                            onclick="deleteUser(${index})">
+                            Delete
+                           </button>`
+                        : ""
+                    }
+                </td>
+            </tr>
+        `;
+        tbody.innerHTML += row;
+    });
+}
+
+/* Create account */
+function createAccount() {
+    const username = document.getElementById("newUsername").value.trim();
+    const password = document.getElementById("newPassword").value.trim();
+    const role = document.getElementById("newRole").value;
+    const message = document.getElementById("message");
+
+    if (!username || !password) {
+        message.style.color = "#ffd6d6";
+        message.textContent = "Please enter username and password.";
+        return;
+    }
+
+    const exists = users.some(
+        user => user.username.toLowerCase() === username.toLowerCase()
+    );
+
+    if (exists) {
+        message.style.color = "#ffd6d6";
+        message.textContent = "Username already exists.";
+        return;
+    }
+
+    users.push({
+        username,
+        password,
+        role
+    });
+
+    saveUsers();
+    renderUsers();
+
+    document.getElementById("newUsername").value = "";
+    document.getElementById("newPassword").value = "";
+
+    message.style.color = "#b7ffb7";
+    message.textContent = "Account created successfully.";
+}
+
+/* Reset password */
+function resetPassword(index) {
+    const newPass = prompt(
+        "Enter new password for " + users[index].username + ":"
+    );
+
+    if (newPass && newPass.trim() !== "") {
+        users[index].password = newPass.trim();
+        saveUsers();
+        renderUsers();
+        alert("Password reset successfully.");
+    }
+}
+
+/* Delete user */
+function deleteUser(index) {
+    if (confirm(
+        "Delete account: " + users[index].username + "?"
+    )) {
+        users.splice(index, 1);
+        saveUsers();
+        renderUsers();
+        alert("Account deleted.");
+    }
+}
+
+/* Logout */
+function logout() {
+    sessionStorage.removeItem("loggedIn");
+    window.location.href = "index.html";
+}
+
+/* Initialize */
+saveUsers();
+renderUsers();
+</script>
+
+</body>
+</html>
