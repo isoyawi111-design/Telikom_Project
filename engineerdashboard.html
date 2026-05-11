@@ -255,30 +255,116 @@ if(sessionStorage.getItem("loggedIn") !== "true"){
 </footer>
 
 <script>
-
-function logout(){
-    sessionStorage.removeItem("loggedIn");
-    window.location.href="index.html";
+// =====================================================
+// ACCESS CONTROL
+// =====================================================
+if (sessionStorage.getItem("loggedIn") !== "true") {
+    window.location.href = "index.html";
 }
 
-function toggleChat(){
-    let chat=document.getElementById("chatPopup");
-    chat.style.display = chat.style.display==="flex"?"none":"flex";
+// =====================================================
+// LOAD CURRENT USER
+// =====================================================
+const currentUsername = sessionStorage.getItem("username");
+const currentRole = sessionStorage.getItem("role");
+
+// If no username is found, return to login page
+if (!currentUsername) {
+    window.location.href = "index.html";
 }
 
-function send(){
-    let input=document.getElementById("msg");
-    let box=document.getElementById("chatBox");
+// =====================================================
+// DISPLAY CURRENT USER IN HEADER
+// Add this element in your HTML header if not present:
+// <span id="currentUser"></span>
+// =====================================================
+document.addEventListener("DOMContentLoaded", function () {
 
-    if(input.value==="") return;
+    // Show logged in user name
+    const currentUserEl = document.getElementById("currentUser");
+    if (currentUserEl) {
+        currentUserEl.textContent =
+            currentUsername + " (" + currentRole + ")";
+    }
 
-    let p=document.createElement("p");
-    p.innerHTML="<b>You:</b> "+input.value;
-    box.appendChild(p);
+    // Show Admin Panel button only for Administrators
+    const adminBtn = document.getElementById("adminBtn");
 
-    input.value="";
-    box.scrollTop=box.scrollHeight;
+    if (adminBtn) {
+        if (currentRole === "Administrator") {
+            adminBtn.style.display = "inline-block";
+        } else {
+            adminBtn.style.display = "none";
+        }
+    }
+});
+
+// =====================================================
+// OPEN MODULE
+// =====================================================
+function openModule(moduleName) {
+    alert(moduleName + " module will open here.");
 }
+
+// =====================================================
+// LOGOUT
+// =====================================================
+function logout() {
+    sessionStorage.clear();
+    window.location.href = "index.html";
+}
+
+// =====================================================
+// GO TO ADMIN DASHBOARD
+// =====================================================
+function openAdminPanel() {
+    window.location.href = "Admindashboard.html";
+}
+
+// =====================================================
+// LIVEWIRE CHAT
+// =====================================================
+function toggleChat() {
+    const chat = document.getElementById("chatPopup");
+    if (!chat) return;
+
+    chat.style.display =
+        chat.style.display === "flex" ? "none" : "flex";
+}
+
+function sendMessage() {
+    const input = document.getElementById("chatInput");
+    const chatBox = document.getElementById("chatBox");
+
+    if (!input || !chatBox) return;
+
+    const message = input.value.trim();
+    if (message === "") return;
+
+    const msgDiv = document.createElement("div");
+    msgDiv.className = "chat-message";
+    msgDiv.innerHTML =
+        "<strong>" + currentUsername + ":</strong> " + message;
+
+    chatBox.appendChild(msgDiv);
+    chatBox.scrollTop = chatBox.scrollHeight;
+
+    input.value = "";
+}
+
+// Send on Enter key
+document.addEventListener("DOMContentLoaded", function () {
+    const chatInput = document.getElementById("chatInput");
+
+    if (chatInput) {
+        chatInput.addEventListener("keypress", function (e) {
+            if (e.key === "Enter") {
+                e.preventDefault();
+                sendMessage();
+            }
+        });
+    }
+});
 </script>
 
 </body>
