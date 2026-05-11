@@ -250,40 +250,38 @@ document.addEventListener("DOMContentLoaded", function () {
         // =================================================
         // SUCCESSFUL LOGIN
         // =================================================
-        if (user) {
+       if (user) {
 
-            // Save session info
-            sessionStorage.setItem("loggedIn", "true");
-            sessionStorage.setItem("username", user.username);
-            sessionStorage.setItem("role", user.role);
+    // Save session info
+    sessionStorage.setItem("loggedIn", "true");
+    sessionStorage.setItem("username", user.username);
+    sessionStorage.setItem("role", user.role);
 
-            // Success message
-            if (message) {
-                message.className = "message success";
-                message.textContent = "Login successful...";
-            }
+    // Show success message
+    if (message) {
+        message.className = "message success";
+        message.textContent = "Login successful...";
+    }
 
-            // Redirect based on role
-            setTimeout(() => {
-                if (user.role === "Administrator") {
-                    window.location.href = "Admindashboard.html";
-                } else {
-                    window.location.href = "dashboard.html";
-                }
-            }, 800);
-
+    // Redirect based on role
+    setTimeout(() => {
+        if (user.role === "Administrator") {
+            // Admin goes to admin dashboard
+            window.location.href = "Admindashboard.html";
         } else {
-
-            // =================================================
-            // INVALID LOGIN
-            // =================================================
-            if (message) {
-                message.className = "message error";
-                message.textContent =
-                    "Invalid username or password.";
-            }
+            // Engineers go to engineer dashboard
+            window.location.href = "engineerdashboard.html";
         }
-    });
+    }, 800);
+
+} else {
+
+    // Invalid login
+    if (message) {
+        message.className = "message error";
+        message.textContent = "Invalid username or password.";
+    }
+}
 
     // =====================================================
     // AUTO REDIRECT IF ALREADY LOGGED IN
