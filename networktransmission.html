@@ -1,1 +1,307 @@
+<div class="container">
 
+    <!-- Site Information -->
+    <div class="card">
+        <h2>Transmission Site Information</h2>
+
+        <div class="form-grid">
+
+            <div class="field">
+                <label>Province</label>
+                <input type="text" id="province">
+            </div>
+
+            <div class="field">
+                <label>Site Name</label>
+                <input type="text" id="siteName">
+            </div>
+
+            <div class="field">
+                <label>Site Code</label>
+                <input type="text" id="siteCode">
+            </div>
+
+            <div class="field">
+                <label>Transmission Type</label>
+                <select id="transmissionType">
+                    <option value="">Select</option>
+                    <option>Fiber Optic</option>
+                    <option>Microwave (MW)</option>
+                    <option>VSAT</option>
+                    <option>Hybrid</option>
+                </select>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- Fiber Section -->
+    <div class="card">
+        <h2>Fiber Optic Transmission Audit</h2>
+
+        <div class="form-grid">
+
+            <div class="field">
+                <label>Fiber Route Name</label>
+                <input type="text">
+            </div>
+
+            <div class="field">
+                <label>Fiber Core Utilization</label>
+                <input type="text" placeholder="e.g. 12/48 Cores">
+            </div>
+
+            <div class="field">
+                <label>OTDR Test Conducted</label>
+                <select>
+                    <option>Yes</option>
+                    <option>No</option>
+                </select>
+            </div>
+
+            <div class="field">
+                <label>Fiber Loss (dB)</label>
+                <input type="number">
+            </div>
+
+            <div class="field">
+                <label>Patch Panel Condition</label>
+                <select>
+                    <option>Good</option>
+                    <option>Fair</option>
+                    <option>Poor</option>
+                </select>
+            </div>
+
+            <div class="field">
+                <label>Splice Enclosure Condition</label>
+                <select>
+                    <option>Good</option>
+                    <option>Fair</option>
+                    <option>Poor</option>
+                </select>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- Microwave Section -->
+    <div class="card">
+        <h2>Microwave (MW) Transmission Audit</h2>
+
+        <div class="form-grid">
+
+            <div class="field">
+                <label>Link Name</label>
+                <input type="text">
+            </div>
+
+            <div class="field">
+                <label>Frequency Band</label>
+                <input type="text" placeholder="e.g. 7GHz">
+            </div>
+
+            <div class="field">
+                <label>MW Vendor</label>
+                <select>
+                    <option>Huawei</option>
+                    <option>Nokia</option>
+                    <option>Ceragon</option>
+                    <option>Ericsson</option>
+                    <option>Other</option>
+                </select>
+            </div>
+
+            <div class="field">
+                <label>Signal Level (dBm)</label>
+                <input type="number">
+            </div>
+
+            <div class="field">
+                <label>Antenna Alignment</label>
+                <select>
+                    <option>Good</option>
+                    <option>Needs Adjustment</option>
+                </select>
+            </div>
+
+            <div class="field">
+                <label>Waveguide Condition</label>
+                <select>
+                    <option>Good</option>
+                    <option>Fair</option>
+                    <option>Poor</option>
+                </select>
+            </div>
+
+            <div class="field">
+                <label>Link Availability (%)</label>
+                <input type="number">
+            </div>
+
+            <div class="field">
+                <label>Alarm Status</label>
+                <select>
+                    <option>No Alarm</option>
+                    <option>Minor Alarm</option>
+                    <option>Major Alarm</option>
+                    <option>Critical Alarm</option>
+                </select>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- VSAT Section -->
+    <div class="card">
+        <h2>VSAT Transmission Audit</h2>
+
+        <div class="form-grid">
+
+            <div class="field">
+                <label>Satellite Provider</label>
+                <input type="text">
+            </div>
+
+            <div class="field">
+                <label>Dish Size</label>
+                <input type="text" placeholder="e.g. 2.4m">
+            </div>
+
+            <div class="field">
+                <label>Modem Type</label>
+                <input type="text">
+            </div>
+
+            <div class="field">
+                <label>Rx Signal Level</label>
+                <input type="text">
+            </div>
+
+            <div class="field">
+                <label>Tx Signal Level</label>
+                <input type="text">
+            </div>
+
+            <div class="field">
+                <label>BUC Condition</label>
+                <select>
+                    <option>Good</option>
+                    <option>Fair</option>
+                    <option>Poor</option>
+                </select>
+            </div>
+
+            <div class="field">
+                <label>LNB Condition</label>
+                <select>
+                    <option>Good</option>
+                    <option>Fair</option>
+                    <option>Poor</option>
+                </select>
+            </div>
+
+            <div class="field">
+                <label>VSAT Alarm Status</label>
+                <select>
+                    <option>No Alarm</option>
+                    <option>Minor Alarm</option>
+                    <option>Major Alarm</option>
+                    <option>Critical Alarm</option>
+                </select>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- Transmission Performance -->
+    <div class="card">
+        <h2>Transmission Performance</h2>
+
+        <div class="form-grid">
+
+            <div class="field">
+                <label>Bandwidth Capacity (Mbps)</label>
+                <input type="number">
+            </div>
+
+            <div class="field">
+                <label>Current Utilization (%)</label>
+                <input type="number">
+            </div>
+
+            <div class="field">
+                <label>Packet Loss (%)</label>
+                <input type="number">
+            </div>
+
+            <div class="field">
+                <label>Latency (ms)</label>
+                <input type="number">
+            </div>
+
+            <div class="field">
+                <label>Jitter (ms)</label>
+                <input type="number">
+            </div>
+
+            <div class="field">
+                <label>Service Status</label>
+                <select>
+                    <option>Operational</option>
+                    <option>Degraded</option>
+                    <option>Outage</option>
+                </select>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- Photo Evidence -->
+    <div class="card">
+        <h2>Transmission Photos</h2>
+
+        <div class="photo-upload">
+            <label>Fiber Equipment Photos</label>
+            <input type="file" accept="image/*" capture="environment" multiple>
+        </div>
+
+        <div class="photo-upload">
+            <label>Microwave Equipment Photos</label>
+            <input type="file" accept="image/*" capture="environment" multiple>
+        </div>
+
+        <div class="photo-upload">
+            <label>VSAT Equipment Photos</label>
+            <input type="file" accept="image/*" capture="environment" multiple>
+        </div>
+    </div>
+
+
+    <!-- Findings -->
+    <div class="card">
+        <h2>Findings & Recommendations</h2>
+
+        <div class="field">
+            <label>Audit Findings</label>
+            <textarea></textarea>
+        </div>
+
+        <div class="field">
+            <label>Corrective Actions Required</label>
+            <textarea></textarea>
+        </div>
+
+        <div class="field">
+            <label>Engineer Remarks</label>
+            <textarea></textarea>
+        </div>
+
+    </div>
+
+</div>
