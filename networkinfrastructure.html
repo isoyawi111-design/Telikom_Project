@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Telikom PNG | Network Infrastructure Audit</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:linear-gradient(135deg,#0057b8,#00a2ff);
+color:white;
+min-height:100vh;
+}
+
+header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px 25px;
+background:rgba(0,0,0,0.25);
+backdrop-filter:blur(12px);
+position:sticky;
+top:0;
+z-index:1000;
+}
+
+.header-left{
+display:flex;
+align-items:center;
+gap:12px;
+}
+
+.header-left img{
+width:55px;
+height:55px;
+border-radius:50%;
+background:white;
+padding:4px;
+}
+
+.btn{
+border:none;
+padding:10px 16px;
+border-radius:8px;
+cursor:pointer;
+font-weight:600;
+color:white;
+}
+
+.back-btn{background:#00b894;}
+.save-btn{background:#003b73;}
+.logout-btn{background:#d00000;}
+
+.actions{
+display:flex;
+gap:10px;
+flex-wrap:wrap;
+}
+
+.container{
+max-width:1400px;
+margin:auto;
+padding:25px;
+}
+
+.card{
+background:rgba(255,255,255,0.15);
+backdrop-filter:blur(18px);
+border-radius:20px;
+padding:25px;
+margin-bottom:20px;
+}
+
+.card h2{
+margin-bottom:20px;
+border-bottom:1px solid rgba(255,255,255,0.3);
+padding-bottom:10px;
+}
+
+.form-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:15px;
+}
+
+.field{
+margin-bottom:15px;
+}
+
+label{
+display:block;
+margin-bottom:6px;
+font-weight:600;
+}
+
+input,
+select,
+textarea{
+width:100%;
+padding:12px;
+border:none;
+border-radius:8px;
+}
+
+textarea{
+min-height:120px;
+}
+
+footer{
+text-align:center;
+padding:15px;
+background:rgba(0,0,0,0.35);
+margin-top:20px;
+}
+
+@media(max-width:768px){
+header{
+flex-direction:column;
+gap:15px;
+text-align:center;
+}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+
+<div class="header-left">
+<img src="logotpng.jfif" alt="Logo">
+
+<div>
+<h2>Network Infrastructure Audit</h2>
+<small>Tower • Shelter • Security • Grounding • Environment</small>
+</div>
+
+</div>
+
+<div class="actions">
+
+<button class="btn back-btn"
+onclick="window.location.href='engineerdashboard.html'">
+Dashboard
+</button>
+
+<button class="btn save-btn"
+onclick="saveInfrastructureAudit()">
+Save Audit
+</button>
+
+<button class="btn logout-btn"
+onclick="logout()">
+Logout
+</button>
+
+</div>
+
+</header>
+
+<div class="container">
+
+<div class="card">
+<h2>Site Information</h2>
+
+<div class="form-grid">
+
+<div class="field">
+<label>Province</label>
+<input type="text">
+</div>
+
+<div class="field">
+<label>Site Name</label>
+<input type="text">
+</div>
+
+<div class="field">
+<label>Site Code</label>
+<input type="text">
+</div>
+
+<div class="field">
+<label>Site Type</label>
+<select>
+<option>Urban</option>
+<option>Rural</option>
+<option>Remote</option>
+<option>Hub Site</option>
+</select>
+</div>
+
+</div>
+</div>
+
+<div class="card">
+<h2>Tower Structure Assessment</h2>
+
+<div class="form-grid">
+
+<div class="field">
+<label>Tower Type</label>
+<select>
+<option>Monopole</option>
+<option>SST</option>
+<option>RDS</option>
+<option>Guyed Mast</option>
+<option>Grillage Tower</option>
+</select>
+</div>
+
+<div class="field">
+<label>Tower Height (m)</label>
+<input type="number">
+</div>
+
+<div class="field">
+<label>Structural Condition</label>
+<select>
+<option>Good</option>
+<option>Fair</option>
+<option>Poor</option>
+</select>
+</div>
+
+<div class="field">
+<label>Corrosion Present</label>
+<select>
+<option>No</option>
+<option>Minor</option>
+<option>Major</option>
+</select>
+</div>
+
+<div class="field">
+<label>Anchor Bolts Condition</label>
+<select>
+<option>Good</option>
+<option>Fair</option>
+<option>Poor</option>
+</select>
+</div>
+
+<div class="field">
+<label>Aviation Lights Status</label>
+<select>
+<option>Operational</option>
+<option>Faulty</option>
+<option>Not Installed</option>
+</select>
+</div>
+
+</div>
+</div>
+
+<div class="card">
+<h2>Shelter & Equipment Room</h2>
+
+<div class="form-grid">
+
+<div class="field">
+<label>Shelter Condition</label>
+<select>
+<option>Excellent</option>
+<option>Good</option>
+<option>Poor</option>
+</select>
+</div>
+
+<div class="field">
+<label>Water Leakage</label>
+<select>
+<option>No</option>
+<option>Yes</option>
+</select>
+</div>
+
+<div class="field">
+<label>Door Lock Condition</label>
+<select>
+<option>Good</option>
+<option>Faulty</option>
+</select>
+</div>
+
+<div class="field">
+<label>Housekeeping Status</label>
+<select>
+<option>Excellent</option>
+<option>Good</option>
+<option>Poor</option>
+</select>
+</div>
+
+</div>
+</div>
+
+<div class="card">
+<h2>Grounding & Lightning Protection</h2>
+
+<div class="form-grid">
+
+<div class="field">
+<label>Earth Resistance (Ohms)</label>
+<input type="number">
+</div>
+
+<div class="field">
+<label>Ground Bar Condition</label>
+<select>
+<option>Good</option>
+<option>Fair</option>
+<option>Poor</option>
+</select>
+</div>
+
+<div class="field">
+<label>Lightning Arrestor Status</label>
+<select>
+<option>Operational</option>
+<option>Faulty</option>
+</select>
+</div>
+
+<div class="field">
+<label>Ground Cable Condition</label>
+<select>
+<option>Good</option>
+<option>Damaged</option>
+</select>
+</div>
+
+</div>
+</div>
+
+<div class="card">
+<h2>Cooling & HVAC Systems</h2>
+
+<div class="form-grid">
+
+<div class="field">
+<label>Air Conditioner Quantity</label>
+<input type="number">
+</div>
+
+<div class="field">
+<label>AC Operational Status</label>
+<select>
+<option>Operational</option>
+<option>Faulty</option>
+<option>Partial</option>
+</select>
+</div>
+
+<div class="field">
+<label>Room Temperature (°C)</label>
+<input type="number">
+</div>
+
+<div class="field">
+<label>Ventilation Status</label>
+<select>
+<option>Good</option>
+<option>Poor</option>
+</select>
+</div>
+
+</div>
+</div>
+
+<div class="card">
+<h2>Site Security Assessment</h2>
+
+<div class="form-grid">
+
+<div class="field">
+<label>Perimeter Fence Condition</label>
+<select>
+<option>Good</option>
+<option>Damaged</option>
+<option>Missing</option>
+</select>
+</div>
+
+<div class="field">
+<label>Gate Condition</label>
+<select>
+<option>Good</option>
+<option>Damaged</option>
+</select>
+</div>
+
+<div class="field">
+<label>Security Lighting</label>
+<select>
+<option>Operational</option>
+<option>Faulty</option>
+</select>
+</div>
+
+<div class="field">
+<label>Intrusion Evidence</label>
+<select>
+<option>No</option>
+<option>Yes</option>
+</select>
+</div>
+
+</div>
+</div>
+
+<div class="card">
+<h2>Cable Management</h2>
+
+<div class="form-grid">
+
+<div class="field">
+<label>Cable Ladder Condition</label>
+<select>
+<option>Good</option>
+<option>Fair</option>
+<option>Poor</option>
+</select>
+</div>
+
+<div class="field">
+<label>Cable Labeling</label>
+<select>
+<option>Complete</option>
+<option>Partial</option>
+<option>Missing</option>
+</select>
+</div>
+
+<div class="field">
+<label>Cable Entry Sealing</label>
+<select>
+<option>Good</option>
+<option>Poor</option>
+</select>
+</div>
+
+<div class="field">
+<label>General Cable Routing</label>
+<select>
+<option>Neat</option>
+<option>Requires Improvement</option>
+</select>
+</div>
+
+</div>
+</div>
+
+<div class="card">
+<h2>Photo Evidence</h2>
+
+<div class="field">
+<label>Tower Photos</label>
+<input type="file" accept="image/*" capture="environment" multiple>
+</div>
+
+<div class="field">
+<label>Shelter Photos</label>
+<input type="file" accept="image/*" capture="environment" multiple>
+</div>
+
+<div class="field">
+<label>Grounding System Photos</label>
+<input type="file" accept="image/*" capture="environment" multiple>
+</div>
+
+<div class="field">
+<label>Security & Fence Photos</label>
+<input type="file" accept="image/*" capture="environment" multiple>
+</div>
+
+</div>
+
+<div class="card">
+<h2>Findings & Recommendations</h2>
+
+<div class="field">
+<label>Infrastructure Findings</label>
+<textarea></textarea>
+</div>
+
+<div class="field">
+<label>Corrective Actions Required</label>
+<textarea></textarea>
+</div>
+
+<div class="field">
+<label>Engineer Remarks</label>
+<textarea></textarea>
+</div>
+
+</div>
+
+</div>
+
+<footer>
+Powered By: <strong>Iso Yawi | System Creator</strong>
+</footer>
+
+<script>
+function saveInfrastructureAudit(){
+alert("Network Infrastructure Audit Saved Successfully!");
+}
+
+function logout(){
+sessionStorage.clear();
+window.location.href='index.html';
+}
+</script>
+
+</body>
+</html>
