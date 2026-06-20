@@ -222,37 +222,19 @@ if (sessionStorage.getItem('loggedIn') !== 'true') {
             <input id="siteName" placeholder="Site Name">
             <input id="siteId" placeholder="Site ID">
 
-            <select id="region">
-                <option>Southern Region</option>
-                <option>Momase Region</option>
-                <option> Highlands Region</option>
-                <option>New Guinea Islands Region</option>
-            </select>
+         <select id="region" onchange="updateProvinces()">
+    <option value="">Select Region</option>
+    <option value="Southern Region">Southern Region</option>
+    <option value="Momase Region">Momase Region</option>
+    <option value="Highlands Region">Highlands Region</option>
+    <option value="New Guinea Islands Region">New Guinea Islands Region</option>
+</select>
 
-            <select id="province">
-                <option>Morobe</option>
-                <option>National Capital District</option>
-                <option>Central</option>
-                <option>Milne Bay</option>
-                <option>Oro</option>
-                <option>Western</option>
-                <option>Gulf</option>
-                <option>Enga</option>
-                <option>Western Highlands</option>
-                <option>Jiwaka</option>
-                <option>Simbu</option>
-                <option>Eastern Highlands</option>
-                <option>Southern Highlands</option>
-                <option>Hela</option>
-                <option>West Sepik</option>
-                <option>East Sepik</option>
-                <option>Madang</option>
-                <option>Manus</option>
-                <option>New Ireland</option>
-                <option>East New Britain</option>
-                <option>West New Britain</option>
-                <option>Bougainville</option>
-            </select>
+<select id="province">
+    <option value="">Select Province</option>
+</select>
+
+         
 
             <input id="latitude" placeholder="Latitude">
             <input id="longitude" placeholder="Longitude">
@@ -582,6 +564,78 @@ function previewImages(input, previewId) {
         reader.readAsDataURL(file);
     });
 }
+
+
+
+function updateProvinces() {
+
+    const region = document.getElementById("region").value;
+    const province = document.getElementById("province");
+
+    province.innerHTML = "";
+
+    const provinces = {
+
+        "Southern Region": [
+            "National Capital District",
+            "Central",
+            "Milne Bay",
+            "Oro",
+            "Western",
+            "Gulf"
+        ],
+
+        "Momase Region": [
+            "Morobe",
+            "Madang",
+            "East Sepik",
+            "West Sepik"
+        ],
+
+        "Highlands Region": [
+            "Enga",
+            "Western Highlands",
+            "Jiwaka",
+            "Simbu",
+            "Eastern Highlands",
+            "Southern Highlands",
+            "Hela"
+        ],
+
+        "New Guinea Islands Region": [
+            "Manus",
+            "New Ireland",
+            "East New Britain",
+            "West New Britain",
+            "Bougainville"
+        ]
+    };
+
+    province.innerHTML =
+        '<option value="">Select Province</option>';
+
+    if (provinces[region]) {
+
+        provinces[region].forEach(function(item) {
+
+            const option =
+                document.createElement("option");
+
+            option.value = item;
+            option.textContent = item;
+
+            province.appendChild(option);
+        });
+    }
+}
+
+// Load Southern Region by default
+window.onload = function () {
+    document.getElementById("region").value =
+        "Southern Region";
+
+    updateProvinces();
+};
 </script>
 
 </body>
