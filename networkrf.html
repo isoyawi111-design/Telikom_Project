@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Telikom PNG | Radio Frequency Audit</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:linear-gradient(135deg,#0057b8,#00a2ff);
+color:white;
+min-height:100vh;
+}
+
+header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px 25px;
+background:rgba(0,0,0,0.25);
+backdrop-filter:blur(12px);
+position:sticky;
+top:0;
+z-index:1000;
+}
+
+.header-left{
+display:flex;
+align-items:center;
+gap:12px;
+}
+
+.header-left img{
+width:55px;
+height:55px;
+border-radius:50%;
+background:white;
+padding:4px;
+}
+
+.btn{
+border:none;
+padding:10px 16px;
+border-radius:8px;
+cursor:pointer;
+font-weight:600;
+color:white;
+}
+
+.back-btn{background:#00b894;}
+.save-btn{background:#003b73;}
+.logout-btn{background:#d00000;}
+
+.actions{
+display:flex;
+gap:10px;
+flex-wrap:wrap;
+}
+
+.container{
+max-width:1400px;
+margin:auto;
+padding:25px;
+}
+
+.card{
+background:rgba(255,255,255,0.15);
+backdrop-filter:blur(18px);
+border-radius:20px;
+padding:25px;
+margin-bottom:20px;
+}
+
+.card h2{
+margin-bottom:20px;
+border-bottom:1px solid rgba(255,255,255,0.3);
+padding-bottom:10px;
+}
+
+.form-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:15px;
+}
+
+.field{
+margin-bottom:15px;
+}
+
+label{
+display:block;
+margin-bottom:6px;
+font-weight:600;
+}
+
+input,
+select,
+textarea{
+width:100%;
+padding:12px;
+border:none;
+border-radius:8px;
+}
+
+textarea{
+min-height:120px;
+}
+
+footer{
+text-align:center;
+padding:15px;
+background:rgba(0,0,0,0.35);
+margin-top:20px;
+}
+
+@media(max-width:768px){
+header{
+flex-direction:column;
+gap:15px;
+text-align:center;
+}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+
+<div class="header-left">
+<img src="logotpng.jfif" alt="Logo">
+
+<div>
+<h2>Radio Frequency Audit</h2>
+<small>2G • 3G • 4G LTE • 5G Network Assessment</small>
+</div>
+
+</div>
+
+<div class="actions">
+
+<button class="btn back-btn"
+onclick="window.location.href='engineerdashboard.html'">
+Dashboard
+</button>
+
+<button class="btn save-btn"
+onclick="saveRFAudit()">
+Save Audit
+</button>
+
+<button class="btn logout-btn"
+onclick="logout()">
+Logout
+</button>
+
+</div>
+
+</header>
+
+<div class="container">
+
+<div class="card">
+<h2>Site Information</h2>
+
+<div class="form-grid">
+
+<div class="field">
+<label>Province</label>
+<input type="text">
+</div>
+
+<div class="field">
+<label>Site Name</label>
+<input type="text">
+</div>
+
+<div class="field">
+<label>Site Code</label>
+<input type="text">
+</div>
+
+<div class="field">
+<label>Region</label>
+<select>
+<option>Southern</option>
+<option>Highlands</option>
+<option>Momase</option>
+<option>NGI</option>
+</select>
+</div>
+
+</div>
+</div>
+
+<div class="card">
+<h2>RF Equipment Information</h2>
+
+<div class="form-grid">
+
+<div class="field">
+<label>Vendor</label>
+<select>
+<option>Huawei</option>
+<option>Nokia</option>
+<option>Ericsson</option>
+<option>ZTE</option>
+</select>
+</div>
+
+<div class="field">
+<label>Technology</label>
+<select>
+<option>2G GSM</option>
+<option>3G UMTS</option>
+<option>4G LTE</option>
+<option>5G NR</option>
+</select>
+</div>
+
+<div class="field">
+<label>Sector Number</label>
+<input type="number">
+</div>
+
+<div class="field">
+<label>RF Cabinet Condition</label>
+<select>
+<option>Good</option>
+<option>Fair</option>
+<option>Poor</option>
+</select>
+</div>
+
+</div>
+</div>
+
+<div class="card">
+<h2>Antenna & Feeder Inspection</h2>
+
+<div class="form-grid">
+
+<div class="field">
+<label>Antenna Type</label>
+<input type="text">
+</div>
+
+<div class="field">
+<label>Antenna Height (m)</label>
+<input type="number">
+</div>
+
+<div class="field">
+<label>Mechanical Tilt</label>
+<input type="number">
+</div>
+
+<div class="field">
+<label>Electrical Tilt</label>
+<input type="number">
+</div>
+
+<div class="field">
+<label>Feeder Condition</label>
+<select>
+<option>Good</option>
+<option>Fair</option>
+<option>Poor</option>
+</select>
+</div>
+
+<div class="field">
+<label>Connector Condition</label>
+<select>
+<option>Good</option>
+<option>Fair</option>
+<option>Poor</option>
+</select>
+</div>
+
+</div>
+</div>
+
+<div class="card">
+<h2>RF Performance Measurements</h2>
+
+<div class="form-grid">
+
+<div class="field">
+<label>VSWR</label>
+<input type="text">
+</div>
+
+<div class="field">
+<label>RSSI (dBm)</label>
+<input type="number">
+</div>
+
+<div class="field">
+<label>RSRP (dBm)</label>
+<input type="number">
+</div>
+
+<div class="field">
+<label>RSRQ (dB)</label>
+<input type="number">
+</div>
+
+<div class="field">
+<label>SINR (dB)</label>
+<input type="number">
+</div>
+
+<div class="field">
+<label>Transmit Power (W)</label>
+<input type="number">
+</div>
+
+</div>
+</div>
+
+<div class="card">
+<h2>Network KPI Assessment</h2>
+
+<div class="form-grid">
+
+<div class="field">
+<label>Call Setup Success Rate (%)</label>
+<input type="number">
+</div>
+
+<div class="field">
+<label>Drop Call Rate (%)</label>
+<input type="number">
+</div>
+
+<div class="field">
+<label>Data Throughput DL (Mbps)</label>
+<input type="number">
+</div>
+
+<div class="field">
+<label>Data Throughput UL (Mbps)</label>
+<input type="number">
+</div>
+
+<div class="field">
+<label>Cell Availability (%)</label>
+<input type="number">
+</div>
+
+<div class="field">
+<label>Congestion Status</label>
+<select>
+<option>Normal</option>
+<option>Moderate</option>
+<option>High</option>
+</select>
+</div>
+
+</div>
+</div>
+
+<div class="card">
+<h2>Alarm Status</h2>
+
+<div class="form-grid">
+
+<div class="field">
+<label>Critical Alarms</label>
+<input type="number">
+</div>
+
+<div class="field">
+<label>Major Alarms</label>
+<input type="number">
+</div>
+
+<div class="field">
+<label>Minor Alarms</label>
+<input type="number">
+</div>
+
+<div class="field">
+<label>Site Status</label>
+<select>
+<option>Operational</option>
+<option>Degraded</option>
+<option>Outage</option>
+</select>
+</div>
+
+</div>
+</div>
+
+<div class="card">
+<h2>Photo Evidence</h2>
+
+<div class="field">
+<label>Antenna Photos</label>
+<input type="file" accept="image/*" capture="environment" multiple>
+</div>
+
+<div class="field">
+<label>RRU / RF Cabinet Photos</label>
+<input type="file" accept="image/*" capture="environment" multiple>
+</div>
+
+<div class="field">
+<label>Feeder & Connector Photos</label>
+<input type="file" accept="image/*" capture="environment" multiple>
+</div>
+
+</div>
+
+<div class="card">
+<h2>Findings & Recommendations</h2>
+
+<div class="field">
+<label>Audit Findings</label>
+<textarea></textarea>
+</div>
+
+<div class="field">
+<label>Corrective Actions</label>
+<textarea></textarea>
+</div>
+
+<div class="field">
+<label>Engineer Remarks</label>
+<textarea></textarea>
+</div>
+
+</div>
+
+</div>
+
+<footer>
+Powered By: <strong>Iso Yawi | System Creator</strong>
+</footer>
+
+<script>
+function saveRFAudit(){
+alert("Radio Frequency Audit Saved Successfully!");
+}
+
+function logout(){
+sessionStorage.clear();
+window.location.href='index.html';
+}
+</script>
+
+</body>
+</html>
