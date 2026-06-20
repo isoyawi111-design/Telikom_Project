@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Telikom PNG | Network Centers Directory</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:linear-gradient(135deg,#0057b8,#00a2ff);
+color:white;
+min-height:100vh;
+}
+
+header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px 25px;
+background:rgba(0,0,0,0.25);
+backdrop-filter:blur(12px);
+}
+
+.header-left{
+display:flex;
+align-items:center;
+gap:12px;
+}
+
+.header-left img{
+width:55px;
+height:55px;
+border-radius:50%;
+background:white;
+padding:4px;
+}
+
+.btn{
+border:none;
+padding:10px 15px;
+border-radius:8px;
+cursor:pointer;
+font-weight:600;
+color:white;
+}
+
+.back-btn{background:#00b894;}
+.save-btn{background:#003b73;}
+.logout-btn{background:#d00000;}
+
+.actions{
+display:flex;
+gap:10px;
+}
+
+.container{
+max-width:1400px;
+margin:auto;
+padding:25px;
+}
+
+.card{
+background:rgba(255,255,255,0.15);
+backdrop-filter:blur(18px);
+padding:25px;
+border-radius:20px;
+margin-bottom:20px;
+}
+
+.card h2{
+margin-bottom:20px;
+border-bottom:1px solid rgba(255,255,255,0.3);
+padding-bottom:10px;
+}
+
+.form-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:15px;
+}
+
+label{
+display:block;
+margin-bottom:6px;
+font-weight:600;
+}
+
+input,select,textarea{
+width:100%;
+padding:12px;
+border:none;
+border-radius:8px;
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+margin-top:15px;
+background:white;
+color:black;
+border-radius:10px;
+overflow:hidden;
+}
+
+th,td{
+padding:12px;
+border:1px solid #ddd;
+text-align:left;
+}
+
+th{
+background:#0057b8;
+color:white;
+}
+
+footer{
+text-align:center;
+padding:15px;
+background:rgba(0,0,0,0.35);
+margin-top:20px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+
+<div class="header-left">
+<img src="logotpng.jfif" alt="Logo">
+
+<div>
+<h2>PNG Network Centers Directory</h2>
+<small>Offices • Exchanges • Stations • Data Centers</small>
+</div>
+</div>
+
+<div class="actions">
+
+<button class="btn back-btn"
+onclick="window.location.href='engineerdashboard.html'">
+Dashboard
+</button>
+
+<button class="btn save-btn">
+Save Record
+</button>
+
+<button class="btn logout-btn"
+onclick="logout()">
+Logout
+</button>
+
+</div>
+
+</header>
+
+<div class="container">
+
+<div class="card">
+
+<h2>Center Information</h2>
+
+<div class="form-grid">
+
+<div>
+<label>Province</label>
+<select>
+<option>Central</option>
+<option>National Capital District</option>
+<option>Morobe</option>
+<option>Madang</option>
+<option>East New Britain</option>
+<option>West New Britain</option>
+<option>New Ireland</option>
+<option>Milne Bay</option>
+<option>Western</option>
+<option>Enga</option>
+<option>Simbu</option>
+<option>Eastern Highlands</option>
+<option>Western Highlands</option>
+<option>Jiwaka</option>
+<option>Southern Highlands</option>
+<option>Hela</option>
+<option>Gulf</option>
+<option>Oro</option>
+<option>Manus</option>
+<option>East Sepik</option>
+<option>West Sepik</option>
+<option>Bougainville</option>
+</select>
+</div>
+
+<div>
+<label>Town / City</label>
+<input type="text">
+</div>
+
+<div>
+<label>Station / Site Name</label>
+<input type="text">
+</div>
+
+<div>
+<label>Center Type</label>
+<select>
+<option>Regional Office</option>
+<option>Provincial Office</option>
+<option>District Office</option>
+<option>Mobile Site</option>
+<option>Exchange</option>
+<option>Data Center</option>
+<option>Transmission Hub</option>
+<option>Customer Service Center</option>
+<option>Technical Workshop</option>
+</select>
+</div>
+
+<div>
+<label>Latitude</label>
+<input type="text">
+</div>
+
+<div>
+<label>Longitude</label>
+<input type="text">
+</div>
+
+<div>
+<label>Site Code</label>
+<input type="text">
+</div>
+
+<div>
+<label>Operational Status</label>
+<select>
+<option>Operational</option>
+<option>Under Maintenance</option>
+<option>Inactive</option>
+</select>
+</div>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<h2>PNG Major Centers Register</h2>
+
+<table>
+
+<tr>
+<th>Province</th>
+<th>Town</th>
+<th>Station</th>
+<th>Type</th>
+</tr>
+
+<tr>
+<td>National Capital District</td>
+<td>Port Moresby</td>
+<td>Head Office</td>
+<td>Regional Office</td>
+</tr>
+
+<tr>
+<td>Morobe</td>
+<td>Lae</td>
+<td>Lae Technical Centre</td>
+<td>Provincial Office</td>
+</tr>
+
+<tr>
+<td>Madang</td>
+<td>Madang</td>
+<td>Madang Exchange</td>
+<td>Exchange</td>
+</tr>
+
+<tr>
+<td>East New Britain</td>
+<td>Kokopo</td>
+<td>Kokopo Regional Hub</td>
+<td>Transmission Hub</td>
+</tr>
+
+<tr>
+<td>Western Highlands</td>
+<td>Mount Hagen</td>
+<td>Mt Hagen Office</td>
+<td>Provincial Office</td>
+</tr>
+
+<tr>
+<td>East Sepik</td>
+<td>Wewak</td>
+<td>Wewak Technical Center</td>
+<td>Provincial Office</td>
+</tr>
+
+</table>
+
+</div>
+
+<div class="card">
+
+<h2>Center Notes</h2>
+
+<label>Remarks</label>
+<textarea rows="6"></textarea>
+
+</div>
+
+</div>
+
+<footer>
+Powered By: <strong>Iso Yawi | System Creator</strong>
+</footer>
+
+<script>
+function logout(){
+sessionStorage.clear();
+window.location.href='index.html';
+}
+</script>
+
+</body>
+</html>
