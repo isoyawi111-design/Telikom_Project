@@ -148,6 +148,39 @@ footer {
         text-align: center;
     }
 }
+
+.photo-section{
+    margin-top:20px;
+}
+
+.photo-upload{
+    background:rgba(255,255,255,0.1);
+    padding:15px;
+    border-radius:12px;
+    margin-bottom:15px;
+}
+
+.photo-upload label{
+    display:block;
+    margin-bottom:8px;
+    font-weight:600;
+}
+
+.photo-preview{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-top:10px;
+}
+
+.photo-preview img{
+    width:120px;
+    height:120px;
+    object-fit:cover;
+    border-radius:10px;
+    border:2px solid rgba(255,255,255,0.4);
+    background:white;
+}
 </style>
 </head>
 <body>
@@ -343,36 +376,126 @@ if (sessionStorage.getItem('loggedIn') !== 'true') {
         </div>
     </div>
 
-    <!-- PHOTOS -->
-    <div class="card">
-        <h2>6. Site Photos</h2>
-        <div class="form-grid">
-            <div class="field">
-                <label>Road Access Photo</label>
-                <input type="file" accept="image/*" capture="environment">
-            </div>
+   <!-- PHOTOS -->
+<div class="card">
+    <h2>6. Site Photos & Evidence</h2>
 
-            <div class="field">
-                <label>Panoramic View Photo</label>
-                <input type="file" accept="image/*" capture="environment">
-            </div>
+    <div class="photo-section">
 
-            <div class="field">
-                <label>Existing Equipment Photo</label>
-                <input type="file" accept="image/*" capture="environment">
-            </div>
-
-            <div class="field">
-                <label>Additional Photos</label>
-                <input type="file" accept="image/*" multiple>
-            </div>
+        <div class="photo-upload">
+            <label>Road Access Photos</label>
+            <input type="file" accept="image/*" capture="environment" multiple
+                   onchange="previewImages(this,'roadPreview')">
+            <div class="photo-preview" id="roadPreview"></div>
         </div>
 
-        <p style="margin-top:10px; opacity:0.9;">
-            Note: Mobile devices can capture GPS coordinates and timestamps in image metadata.
-        </p>
-    </div>
+        <div class="photo-upload">
+            <label>Site Compound Photos</label>
+            <input type="file" accept="image/*" capture="environment" multiple
+                   onchange="previewImages(this,'compoundPreview')">
+            <div class="photo-preview" id="compoundPreview"></div>
+        </div>
 
+        <div class="photo-upload">
+            <label>Tower Structure Photos</label>
+            <input type="file" accept="image/*" capture="environment" multiple
+                   onchange="previewImages(this,'towerPreview')">
+            <div class="photo-preview" id="towerPreview"></div>
+        </div>
+
+        <div class="photo-upload">
+            <label>RF Equipment Photos</label>
+            <input type="file" accept="image/*" capture="environment" multiple
+                   onchange="previewImages(this,'rfPreview')">
+            <div class="photo-preview" id="rfPreview"></div>
+        </div>
+
+        <div class="photo-upload">
+            <label>Transmission Equipment Photos</label>
+            <input type="file" accept="image/*" capture="environment" multiple
+                   onchange="previewImages(this,'txPreview')">
+            <div class="photo-preview" id="txPreview"></div>
+        </div>
+
+        <div class="photo-upload">
+            <label>Generator Photos</label>
+            <input type="file" accept="image/*" capture="environment" multiple
+                   onchange="previewImages(this,'genPreview')">
+            <div class="photo-preview" id="genPreview"></div>
+        </div>
+
+        <div class="photo-upload">
+            <label>Solar System Photos</label>
+            <input type="file" accept="image/*" capture="environment" multiple
+                   onchange="previewImages(this,'solarPreview')">
+            <div class="photo-preview" id="solarPreview"></div>
+        </div>
+
+        <div class="photo-upload">
+            <label>Battery Bank Photos</label>
+            <input type="file" accept="image/*" capture="environment" multiple
+                   onchange="previewImages(this,'batteryPreview')">
+            <div class="photo-preview" id="batteryPreview"></div>
+        </div>
+
+        <div class="photo-upload">
+            <label>Rectifier System Photos</label>
+            <input type="file" accept="image/*" capture="environment" multiple
+                   onchange="previewImages(this,'rectifierPreview')">
+            <div class="photo-preview" id="rectifierPreview"></div>
+        </div>
+
+        <div class="photo-upload">
+            <label>Earthing & Grounding Photos</label>
+            <input type="file" accept="image/*" capture="environment" multiple
+                   onchange="previewImages(this,'earthPreview')">
+            <div class="photo-preview" id="earthPreview"></div>
+        </div>
+
+        <div class="photo-upload">
+            <label>Shelter Interior Photos</label>
+            <input type="file" accept="image/*" capture="environment" multiple
+                   onchange="previewImages(this,'shelterPreview')">
+            <div class="photo-preview" id="shelterPreview"></div>
+        </div>
+
+        <div class="photo-upload">
+            <label>Security Fence & Gate Photos</label>
+            <input type="file" accept="image/*" capture="environment" multiple
+                   onchange="previewImages(this,'securityPreview')">
+            <div class="photo-preview" id="securityPreview"></div>
+        </div>
+
+        <div class="photo-upload">
+            <label>Fuel Tank Photos</label>
+            <input type="file" accept="image/*" capture="environment" multiple
+                   onchange="previewImages(this,'fuelPreview')">
+            <div class="photo-preview" id="fuelPreview"></div>
+        </div>
+
+        <div class="photo-upload">
+            <label>Hazard & Defect Photos</label>
+            <input type="file" accept="image/*" capture="environment" multiple
+                   onchange="previewImages(this,'hazardPreview')">
+            <div class="photo-preview" id="hazardPreview"></div>
+        </div>
+
+        <div class="photo-upload">
+            <label>Spare Parts Photos</label>
+            <input type="file" accept="image/*" capture="environment" multiple
+                   onchange="previewImages(this,'sparePreview')">
+            <div class="photo-preview" id="sparePreview"></div>
+        </div>
+
+        <div class="photo-upload">
+            <label>Final Site Overview Photos</label>
+            <input type="file" accept="image/*" capture="environment" multiple
+                   onchange="previewImages(this,'overviewPreview')">
+            <div class="photo-preview" id="overviewPreview"></div>
+        </div>
+
+    </div>
+</div>
     <!-- COMMENTS -->
     <div class="card">
         <h2>7. Final Comments & Recommendations</h2>
@@ -432,6 +555,31 @@ if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(position) {
         document.getElementById('latitude').value = position.coords.latitude.toFixed(6);
         document.getElementById('longitude').value = position.coords.longitude.toFixed(6);
+    });
+}
+
+function previewImages(input, previewId) {
+
+    const preview =
+        document.getElementById(previewId);
+
+    preview.innerHTML = '';
+
+    Array.from(input.files).forEach(file => {
+
+        const reader = new FileReader();
+
+        reader.onload = function(e) {
+
+            const img =
+                document.createElement('img');
+
+            img.src = e.target.result;
+
+            preview.appendChild(img);
+        };
+
+        reader.readAsDataURL(file);
     });
 }
 </script>
