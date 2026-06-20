@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Telikom PNG | Base Station Systems Audit</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:linear-gradient(135deg,#0057b8,#00a2ff);
+color:white;
+min-height:100vh;
+}
+
+header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px 25px;
+background:rgba(0,0,0,0.25);
+backdrop-filter:blur(12px);
+position:sticky;
+top:0;
+z-index:1000;
+}
+
+.header-left{
+display:flex;
+align-items:center;
+gap:12px;
+}
+
+.header-left img{
+width:55px;
+height:55px;
+border-radius:50%;
+background:white;
+padding:4px;
+}
+
+.btn{
+border:none;
+padding:10px 16px;
+border-radius:8px;
+cursor:pointer;
+font-weight:600;
+color:white;
+}
+
+.back-btn{background:#00b894;}
+.save-btn{background:#003b73;}
+.logout-btn{background:#d00000;}
+
+.actions{
+display:flex;
+gap:10px;
+flex-wrap:wrap;
+}
+
+.container{
+max-width:1400px;
+margin:auto;
+padding:25px;
+}
+
+.card{
+background:rgba(255,255,255,0.15);
+backdrop-filter:blur(18px);
+border-radius:20px;
+padding:25px;
+margin-bottom:20px;
+}
+
+.card h2{
+margin-bottom:20px;
+border-bottom:1px solid rgba(255,255,255,0.3);
+padding-bottom:10px;
+}
+
+.form-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:15px;
+}
+
+.field{
+margin-bottom:15px;
+}
+
+label{
+display:block;
+margin-bottom:6px;
+font-weight:600;
+}
+
+input,
+select,
+textarea{
+width:100%;
+padding:12px;
+border:none;
+border-radius:8px;
+}
+
+textarea{
+min-height:120px;
+}
+
+footer{
+text-align:center;
+padding:15px;
+background:rgba(0,0,0,0.35);
+margin-top:20px;
+}
+
+@media(max-width:768px){
+header{
+flex-direction:column;
+gap:15px;
+text-align:center;
+}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+
+<div class="header-left">
+<img src="logotpng.jfif" alt="Logo">
+
+<div>
+<h2>Base Station Systems Audit</h2>
+<small>BTS • NodeB • eNodeB • gNodeB Inspection</small>
+</div>
+</div>
+
+<div class="actions">
+
+<button class="btn back-btn"
+onclick="window.location.href='engineerdashboard.html'">
+Dashboard
+</button>
+
+<button class="btn save-btn"
+onclick="saveBSSAudit()">
+Save Audit
+</button>
+
+<button class="btn logout-btn"
+onclick="logout()">
+Logout
+</button>
+
+</div>
+</header>
+
+<div class="container">
+
+<div class="card">
+<h2>Site Information</h2>
+
+<div class="form-grid">
+
+<div class="field">
+<label>Province</label>
+<input type="text">
+</div>
+
+<div class="field">
+<label>Site Name</label>
+<input type="text">
+</div>
+
+<div class="field">
+<label>Site Code</label>
+<input type="text">
+</div>
+
+<div class="field">
+<label>Technology</label>
+<select>
+<option>2G BTS</option>
+<option>3G NodeB</option>
+<option>4G eNodeB</option>
+<option>5G gNodeB</option>
+</select>
+</div>
+
+</div>
+</div>
+
+<div class="card">
+<h2>Baseband Unit (BBU) Inspection</h2>
+
+<div class="form-grid">
+
+<div class="field">
+<label>BBU Vendor</label>
+<select>
+<option>Huawei</option>
+<option>Nokia</option>
+<option>Ericsson</option>
+<option>ZTE</option>
+</select>
+</div>
+
+<div class="field">
+<label>BBU Model</label>
+<input type="text">
+</div>
+
+<div class="field">
+<label>Operational Status</label>
+<select>
+<option>Online</option>
+<option>Offline</option>
+<option>Degraded</option>
+</select>
+</div>
+
+<div class="field">
+<label>Software Version</label>
+<input type="text">
+</div>
+
+</div>
+</div>
+
+<div class="card">
+<h2>Remote Radio Unit (RRU) Inspection</h2>
+
+<div class="form-grid">
+
+<div class="field">
+<label>RRU Quantity</label>
+<input type="number">
+</div>
+
+<div class="field">
+<label>RRU Condition</label>
+<select>
+<option>Good</option>
+<option>Fair</option>
+<option>Poor</option>
+</select>
+</div>
+
+<div class="field">
+<label>RRU Temperature (°C)</label>
+<input type="number">
+</div>
+
+<div class="field">
+<label>Fiber Connections Status</label>
+<select>
+<option>Good</option>
+<option>Faulty</option>
+</select>
+</div>
+
+</div>
+</div>
+
+<div class="card">
+<h2>Power System Inspection</h2>
+
+<div class="form-grid">
+
+<div class="field">
+<label>Rectifier Status</label>
+<select>
+<option>Operational</option>
+<option>Faulty</option>
+</select>
+</div>
+
+<div class="field">
+<label>DC Voltage (V)</label>
+<input type="number">
+</div>
+
+<div class="field">
+<label>Battery Bank Status</label>
+<select>
+<option>Good</option>
+<option>Fair</option>
+<option>Poor</option>
+</select>
+</div>
+
+<div class="field">
+<label>Generator Interface</label>
+<select>
+<option>Operational</option>
+<option>Faulty</option>
+</select>
+</div>
+
+</div>
+</div>
+
+<div class="card">
+<h2>Transmission Interface</h2>
+
+<div class="form-grid">
+
+<div class="field">
+<label>Backhaul Type</label>
+<select>
+<option>Fiber</option>
+<option>Microwave</option>
+<option>VSAT</option>
+</select>
+</div>
+
+<div class="field">
+<label>Transmission Status</label>
+<select>
+<option>Up</option>
+<option>Down</option>
+<option>Intermittent</option>
+</select>
+</div>
+
+<div class="field">
+<label>Link Utilization (%)</label>
+<input type="number">
+</div>
+
+<div class="field">
+<label>Transmission Alarms</label>
+<input type="text">
+</div>
+
+</div>
+</div>
+
+<div class="card">
+<h2>Alarm & Performance Assessment</h2>
+
+<div class="form-grid">
+
+<div class="field">
+<label>Critical Alarms</label>
+<input type="number">
+</div>
+
+<div class="field">
+<label>Major Alarms</label>
+<input type="number">
+</div>
+
+<div class="field">
+<label>Minor Alarms</label>
+<input type="number">
+</div>
+
+<div class="field">
+<label>Cell Availability (%)</label>
+<input type="number">
+</div>
+
+<div class="field">
+<label>Traffic Load (%)</label>
+<input type="number">
+</div>
+
+<div class="field">
+<label>Site Status</label>
+<select>
+<option>Operational</option>
+<option>Degraded</option>
+<option>Outage</option>
+</select>
+</div>
+
+</div>
+</div>
+
+<div class="card">
+<h2>Photo Evidence</h2>
+
+<div class="field">
+<label>BBU Photos</label>
+<input type="file" accept="image/*" capture="environment" multiple>
+</div>
+
+<div class="field">
+<label>RRU Photos</label>
+<input type="file" accept="image/*" capture="environment" multiple>
+</div>
+
+<div class="field">
+<label>Power System Photos</label>
+<input type="file" accept="image/*" capture="environment" multiple>
+</div>
+
+<div class="field">
+<label>Equipment Rack Photos</label>
+<input type="file" accept="image/*" capture="environment" multiple>
+</div>
+
+</div>
+
+<div class="card">
+<h2>Findings & Recommendations</h2>
+
+<div class="field">
+<label>Audit Findings</label>
+<textarea></textarea>
+</div>
+
+<div class="field">
+<label>Corrective Actions</label>
+<textarea></textarea>
+</div>
+
+<div class="field">
+<label>Engineer Remarks</label>
+<textarea></textarea>
+</div>
+
+</div>
+
+</div>
+
+<footer>
+Powered By: <strong>Iso Yawi | System Creator</strong>
+</footer>
+
+<script>
+function saveBSSAudit(){
+alert("Base Station Systems Audit Saved Successfully!");
+}
+
+function logout(){
+sessionStorage.clear();
+window.location.href='index.html';
+}
+</script>
+
+</body>
+</html>
