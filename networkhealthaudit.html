@@ -160,6 +160,22 @@ footer {
     margin-bottom:15px;
 }
 
+.photo-upload button{
+    background:#0057b8;
+    color:white;
+    border:none;
+    padding:10px 15px;
+    border-radius:8px;
+    cursor:pointer;
+    margin-right:10px;
+    margin-bottom:10px;
+    font-weight:600;
+}
+
+.photo-upload button:hover{
+    background:#003f85;
+}
+
 .photo-upload label{
     display:block;
     margin-bottom:8px;
@@ -364,117 +380,582 @@ if (sessionStorage.getItem('loggedIn') !== 'true') {
 
     <div class="photo-section">
 
-        <div class="photo-upload">
-            <label>Road Access Photos</label>
-            <input type="file" accept="image/*" capture="environment" multiple
-                   onchange="previewImages(this,'roadPreview')">
-            <div class="photo-preview" id="roadPreview"></div>
-        </div>
+       <div class="photo-upload">
+    <label>Road Access Photos</label>
 
+    <button type="button"
+            onclick="document.getElementById('roadCapture').click()">
+        📷 Capture Photo
+    </button>
+
+    <button type="button"
+            onclick="document.getElementById('roadUpload').click()">
+        📁 Upload Photo
+    </button>
+
+    <input id="roadCapture"
+           type="file"
+           accept="image/*"
+           capture="environment"
+           multiple
+           style="display:none"
+           onchange="previewImages(this,'roadPreview')">
+
+    <input id="roadUpload"
+           type="file"
+           accept="image/*"
+           multiple
+           style="display:none"
+           onchange="previewImages(this,'roadPreview')">
+
+    <div class="photo-preview" id="roadPreview"></div>
+</div>
+
+<div class="photo-upload">
+    <label>Site Compound Preview</label>
+
+    <button type="button"
+            onclick="document.getElementById('compoundCapture').click()">
+        📷 Capture Photo
+    </button>
+
+    <button type="button"
+            onclick="document.getElementById('compoundUpload').click()">
+        📁 Upload Photo
+    </button>
+
+    <input id="roadCapture"
+           type="file"
+           accept="image/*"
+           capture="environment"
+           multiple
+           style="display:none"
+           onchange="previewImages(this,'compoundPreview"')">
+
+    <input id="roadUpload"
+           type="file"
+           accept="image/*"
+           multiple
+           style="display:none"
+           onchange="previewImages(this,'compoundPreview"')">
+
+    <div class="photo-preview" id="compoundPreview""></div>
+</div>    
+<!--
         <div class="photo-upload">
             <label>Site Compound Photos</label>
             <input type="file" accept="image/*" capture="environment" multiple
                    onchange="previewImages(this,'compoundPreview')">
             <div class="photo-preview" id="compoundPreview"></div>
         </div>
+---->
 
-        <div class="photo-upload">
+    <div class="photo-upload">
+    <label>Tower Structure Photos</label>
+
+    <button type="button"
+            onclick="document.getElementById('roadCapture').click()">
+        📷 Capture Photo
+    </button>
+
+    <button type="button"
+            onclick="document.getElementById('towerUpload').click()">
+        📁 Upload Photo
+    </button>
+
+    <input id="towerCapture"
+           type="file"
+           accept="image/*"
+           capture="environment"
+           multiple
+           style="display:none"
+           onchange="previewImages(this,'towerPreview')">
+
+    <input id="roadUpload"
+           type="file"
+           accept="image/*"
+           multiple
+           style="display:none"
+           onchange="previewImages(this,'towerPreview')">
+
+    <div class="photo-preview" id="towerPreview"></div>
+</div>
+     <!--   <div class="photo-upload">
             <label>Tower Structure Photos</label>
             <input type="file" accept="image/*" capture="environment" multiple
                    onchange="previewImages(this,'towerPreview')">
             <div class="photo-preview" id="towerPreview"></div>
         </div>
 
-        <div class="photo-upload">
+        -->
+<div class="photo-upload">
+    <label>RF Equipment Photos</label>
+
+    <button type="button"
+            onclick="document.getElementById('rfCapture').click()">
+        📷 Capture Photo
+    </button>
+
+    <button type="button"
+            onclick="document.getElementById('rfUpload').click()">
+        📁 Upload Photo
+    </button>
+
+    <input id="rfCapture"
+           type="file"
+           accept="image/*"
+           capture="environment"
+           multiple
+           style="display:none"
+           onchange="previewImages(this,'rfPreview')">
+
+    <input id="roadUpload"
+           type="file"
+           accept="image/*"
+           multiple
+           style="display:none"
+           onchange="previewImages(this,'rfPreview')">
+
+    <div class="photo-preview" id="rfPreview"></div>
+</div>
+      <!--  <div class="photo-upload">
             <label>RF Equipment Photos</label>
             <input type="file" accept="image/*" capture="environment" multiple
                    onchange="previewImages(this,'rfPreview')">
             <div class="photo-preview" id="rfPreview"></div>
-        </div>
+        </div> -->
+<div class="photo-upload">
+    <label>Transmission Equipment Photos</label>
 
-        <div class="photo-upload">
+    <button type="button"
+            onclick="document.getElementById('txCapture').click()">
+        📷 Capture Photo
+    </button>
+
+    <button type="button"
+            onclick="document.getElementById('txUpload').click()">
+        📁 Upload Photo
+    </button>
+
+    <input id="txCapture"
+           type="file"
+           accept="image/*"
+           capture="environment"
+           multiple
+           style="display:none"
+           onchange="previewImages(this,'txPreview')">
+
+    <input id="txUpload"
+           type="file"
+           accept="image/*"
+           multiple
+           style="display:none"
+           onchange="previewImages(this,'txPreview')">
+
+    <div class="photo-preview" id="txPreview"></div>
+</div>
+        <!--<div class="photo-upload">
             <label>Transmission Equipment Photos</label>
             <input type="file" accept="image/*" capture="environment" multiple
                    onchange="previewImages(this,'txPreview')">
             <div class="photo-preview" id="txPreview"></div>
-        </div>
+        </div> -->
+<div class="photo-upload">
+    <label>Generator Photos</label>
 
-        <div class="photo-upload">
+    <button type="button"
+            onclick="document.getElementById('genCapture').click()">
+        📷 Capture Photo
+    </button>
+
+    <button type="button"
+            onclick="document.getElementById('genUpload').click()">
+        📁 Upload Photo
+    </button>
+
+    <input id="gen"
+           type="file"
+           accept="image/*"
+           capture="environment"
+           multiple
+           style="display:none"
+           onchange="previewImages(this,'genPreview')">
+
+    <input id="roadUpload"
+           type="file"
+           accept="image/*"
+           multiple
+           style="display:none"
+           onchange="previewImages(this,'roadPreview')">
+
+    <div class="photo-preview" id="genPreview"></div>
+</div>
+       <!-- <div class="photo-upload">
             <label>Generator Photos</label>
             <input type="file" accept="image/*" capture="environment" multiple
                    onchange="previewImages(this,'genPreview')">
             <div class="photo-preview" id="genPreview"></div>
-        </div>
+        </div> -->
+<div class="photo-upload">
+    <label>Solar System Photos</label>
 
-        <div class="photo-upload">
+    <button type="button"
+            onclick="document.getElementById('solarCapture').click()">
+        📷 Capture Photo
+    </button>
+
+    <button type="button"
+            onclick="document.getElementById('solarUpload').click()">
+        📁 Upload Photo
+    </button>
+
+    <input id="solarCapture"
+           type="file"
+           accept="image/*"
+           capture="environment"
+           multiple
+           style="display:none"
+           onchange="previewImages(this,'solarPreview')">
+
+    <input id="solarUpload"
+           type="file"
+           accept="image/*"
+           multiple
+           style="display:none"
+           onchange="previewImages(this,'solarPreview')">
+
+    <div class="photo-preview" id="solarPreview"></div>
+</div>
+        <!--<div class="photo-upload">
             <label>Solar System Photos</label>
             <input type="file" accept="image/*" capture="environment" multiple
                    onchange="previewImages(this,'solarPreview')">
             <div class="photo-preview" id="solarPreview"></div>
-        </div>
+        </div> -->
+<div class="photo-upload">
+    <label>Battery Bank Photos</label>
 
-        <div class="photo-upload">
+    <button type="button"
+            onclick="document.getElementById('roadCapture').click()">
+        📷 Capture Photo
+    </button>
+
+    <button type="button"
+            onclick="document.getElementById('batteryUpload').click()">
+        📁 Upload Photo
+    </button>
+
+    <input id="batteryCapture"
+           type="file"
+           accept="image/*"
+           capture="environment"
+           multiple
+           style="display:none"
+           onchange="previewImages(this,'batteryPreview')">
+
+    <input id="batteryUpload"
+           type="file"
+           accept="image/*"
+           multiple
+           style="display:none"
+           onchange="previewImages(this,'batteryPreview')">
+
+    <div class="photo-preview" id="batteryPreview"></div>
+</div>
+        <<!--div class="photo-upload">
             <label>Battery Bank Photos</label>
             <input type="file" accept="image/*" capture="environment" multiple
                    onchange="previewImages(this,'batteryPreview')">
             <div class="photo-preview" id="batteryPreview"></div>
-        </div>
+        </div> -->
+<div class="photo-upload">
+    <label>Rectifier System Photos</label>
 
-        <div class="photo-upload">
+    <button type="button"
+            onclick="document.getElementById('rectifierCapture').click()">
+        📷 Capture Photo
+    </button>
+
+    <button type="button"
+            onclick="document.getElementById('rectifierUpload').click()">
+        📁 Upload Photo
+    </button>
+
+    <input id="rectifierCapture"
+           type="file"
+           accept="image/*"
+           capture="environment"
+           multiple
+           style="display:none"
+           onchange="previewImages(this,'rectifierPreview')">
+
+    <input id="roadUpload"
+           type="file"
+           accept="image/*"
+           multiple
+           style="display:none"
+           onchange="previewImages(this,'rectifierPreview')">
+
+    <div class="photo-preview" id="rectifierPreview"></div>
+</div>
+       <!-- <div class="photo-upload">
             <label>Rectifier System Photos</label>
             <input type="file" accept="image/*" capture="environment" multiple
                    onchange="previewImages(this,'rectifierPreview')">
             <div class="photo-preview" id="rectifierPreview"></div>
-        </div>
+        </div>-->
+<div class="photo-upload">
+    <label>Earthing & Grounding Photos</label>
 
-        <div class="photo-upload">
+    <button type="button"
+            onclick="document.getElementById('earthCapture').click()">
+        📷 Capture Photo
+    </button>
+
+    <button type="button"
+            onclick="document.getElementById('earthUpload').click()">
+        📁 Upload Photo
+    </button>
+
+    <input id="earthCapture"
+           type="file"
+           accept="image/*"
+           capture="environment"
+           multiple
+           style="display:none"
+           onchange="previewImages(this,'earthPreview')">
+
+    <input id="roadUpload"
+           type="file"
+           accept="image/*"
+           multiple
+           style="display:none"
+           onchange="previewImages(this,'earthPreview')">
+
+    <div class="photo-preview" id="earthPreview"></div>
+</div>
+       <!-- <div class="photo-upload">
             <label>Earthing & Grounding Photos</label>
             <input type="file" accept="image/*" capture="environment" multiple
                    onchange="previewImages(this,'earthPreview')">
             <div class="photo-preview" id="earthPreview"></div>
-        </div>
+        </div> -->
+<div class="photo-upload">
+    <label>Shelter Interior Photos</label>
 
-        <div class="photo-upload">
+    <button type="button"
+            onclick="document.getElementById('shelterCapture').click()">
+        📷 Capture Photo
+    </button>
+
+    <button type="button"
+            onclick="document.getElementById('shelterUpload').click()">
+        📁 Upload Photo
+    </button>
+
+    <input id="shelterCapture"
+           type="file"
+           accept="image/*"
+           capture="environment"
+           multiple
+           style="display:none"
+           onchange="previewImages(this,'shelterPreview')">
+
+    <input id="roadUpload"
+           type="file"
+           accept="image/*"
+           multiple
+           style="display:none"
+           onchange="previewImages(this,'shelterPreview')">
+
+    <div class="photo-preview" id="shelterPreview"></div>
+</div>
+       <!-- <div class="photo-upload">
             <label>Shelter Interior Photos</label>
             <input type="file" accept="image/*" capture="environment" multiple
                    onchange="previewImages(this,'shelterPreview')">
             <div class="photo-preview" id="shelterPreview"></div>
-        </div>
+        </div> -->
+<div class="photo-upload">
+    <label>Security Gate & Fence Photos</label>
 
-        <div class="photo-upload">
+    <button type="button"
+            onclick="document.getElementById('securityCapture').click()">
+        📷 Capture Photo
+    </button>
+
+    <button type="button"
+            onclick="document.getElementById('securityUpload').click()">
+        📁 Upload Photo
+    </button>
+
+    <input id="securityCapture"
+           type="file"
+           accept="image/*"
+           capture="environment"
+           multiple
+           style="display:none"
+           onchange="previewImages(this,'securityPreview')">
+
+    <input id="roadUpload"
+           type="file"
+           accept="image/*"
+           multiple
+           style="display:none"
+           onchange="previewImages(this,'securityPreview')">
+
+    <div class="photo-preview" id="securityPreview"></div>
+</div>
+       <!-- <div class="photo-upload">
             <label>Security Fence & Gate Photos</label>
             <input type="file" accept="image/*" capture="environment" multiple
                    onchange="previewImages(this,'securityPreview')">
             <div class="photo-preview" id="securityPreview"></div>
-        </div>
+        </div> -->
+<div class="photo-upload">
+    <label>Guel Tank Photos</label>
 
-        <div class="photo-upload">
+    <button type="button"
+            onclick="document.getElementById('fuelCapture').click()">
+        📷 Capture Photo
+    </button>
+
+    <button type="button"
+            onclick="document.getElementById('fuelUpload').click()">
+        📁 Upload Photo
+    </button>
+
+    <input id="fuelCapture"
+           type="file"
+           accept="image/*"
+           capture="environment"
+           multiple
+           style="display:none"
+           onchange="previewImages(this,'fuelPreview')">
+
+    <input id="roadUpload"
+           type="file"
+           accept="image/*"
+           multiple
+           style="display:none"
+           onchange="previewImages(this,'fuelPreview')">
+
+    <div class="photo-preview" id="fuelPreview"></div>
+</div>
+      <!--  <div class="photo-upload">
             <label>Fuel Tank Photos</label>
             <input type="file" accept="image/*" capture="environment" multiple
                    onchange="previewImages(this,'fuelPreview')">
             <div class="photo-preview" id="fuelPreview"></div>
-        </div>
+        </div> -->
+<div class="photo-upload">
+    <label>Hazard & Photos</label>
 
-        <div class="photo-upload">
+    <button type="button"
+            onclick="document.getElementById('rectifierCapture').click()">
+        📷 Capture Photo
+    </button>
+
+    <button type="button"
+            onclick="document.getElementById('hazardUpload').click()">
+        📁 Upload Photo
+    </button>
+
+    <input id="hazardCapture"
+           type="file"
+           accept="image/*"
+           capture="environment"
+           multiple
+           style="display:none"
+           onchange="previewImages(this,'hazardPreview')">
+
+    <input id="roadUpload"
+           type="file"
+           accept="image/*"
+           multiple
+           style="display:none"
+           onchange="previewImages(this,'hazardPreview')">
+
+    <div class="photo-preview" id="hazardPreview"></div>
+</div>
+        <!--<div class="photo-upload">
             <label>Hazard & Defect Photos</label>
             <input type="file" accept="image/*" capture="environment" multiple
                    onchange="previewImages(this,'hazardPreview')">
             <div class="photo-preview" id="hazardPreview"></div>
-        </div>
+        </div> -->
+<div class="photo-upload">
+    <label>Spare Parts Photos</label>
 
-        <div class="photo-upload">
+    <button type="button"
+            onclick="document.getElementById('rectifierCapture').click()">
+        📷 Capture Photo
+    </button>
+
+    <button type="button"
+            onclick="document.getElementById('spareUpload').click()">
+        📁 Upload Photo
+    </button>
+
+    <input id="spareCapture"
+           type="file"
+           accept="image/*"
+           capture="environment"
+           multiple
+           style="display:none"
+           onchange="previewImages(this,'sparePreview')">
+
+    <input id="spareUpload"
+           type="file"
+           accept="image/*"
+           multiple
+           style="display:none"
+           onchange="previewImages(this,'sparePreview')">
+
+    <div class="photo-preview" id="sparePreview"></div>
+</div>
+       <!-- <div class="photo-upload">
             <label>Spare Parts Photos</label>
             <input type="file" accept="image/*" capture="environment" multiple
                    onchange="previewImages(this,'sparePreview')">
             <div class="photo-preview" id="sparePreview"></div>
-        </div>
+        </div>-->
+<div class="photo-upload">
+    <label>Site Overview Photos</label>
 
-        <div class="photo-upload">
+    <button type="button"
+            onclick="document.getElementById('overviewCapture').click()">
+        📷 Capture Photo
+    </button>
+
+    <button type="button"
+            onclick="document.getElementById('overviewUpload').click()">
+        📁 Upload Photo
+    </button>
+
+    <input id="overviewCapture"
+           type="file"
+           accept="image/*"
+           capture="environment"
+           multiple
+           style="display:none"
+           onchange="previewImages(this,'overviewPreview')">
+
+    <input id="roadUpload"
+           type="file"
+           accept="image/*"
+           multiple
+           style="display:none"
+           onchange="previewImages(this,'overviewPreview')">
+
+    <div class="photo-preview" id="ocerviewPreview"></div>
+</div>
+        <!--<div class="photo-upload">
             <label>Final Site Overview Photos</label>
             <input type="file" accept="image/*" capture="environment" multiple
                    onchange="previewImages(this,'overviewPreview')">
             <div class="photo-preview" id="overviewPreview"></div>
-        </div>
+        </div> -->
 
     </div>
 </div>
